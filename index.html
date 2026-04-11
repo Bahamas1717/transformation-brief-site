@@ -111,20 +111,17 @@ section { padding: 96px 48px; }
 .reframing .section-label { color: var(--orange); }
 .reframing-question { font-size: clamp(20px, 3vw, 30px); color: var(--white); font-weight: 700; line-height: 1.5; max-width: 820px; border-left: 4px solid var(--orange); padding-left: 32px; margin-top: 16px; }
 
-/* GOVERNANCE REMINDER - NEW */
-.governance { background: var(--orange); padding: 80px 48px; }
+/* GOVERNANCE REMINDER */
+.governance { background: var(--navy); padding: 80px 48px; }
 .governance-inner { max-width: 900px; margin: 0 auto; }
-.governance-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 12px; }
-.governance-tagline { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.25); }
-.governance-questions { list-style: none; counter-reset: gov-q; }
+.governance-card { background: var(--orange); border-radius: 4px; padding: 48px; position: relative; overflow: hidden; }
+.governance-card::before { content: ''; position: absolute; top: 0; right: 0; width: 300px; height: 300px; background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 70%); pointer-events: none; }
+.governance-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 12px; position: relative; }
+.governance-tagline { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.25); position: relative; }
+.governance-questions { list-style: none; counter-reset: gov-q; position: relative; }
 .governance-questions li { counter-increment: gov-q; font-size: 18px; color: var(--white); font-weight: 600; line-height: 1.55; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; align-items: flex-start; gap: 16px; }
 .governance-questions li:last-child { border-bottom: none; }
-.governance-questions li::before { content: counter(gov-q); font-size: 14px; font-weight: 700; color: var(--navy); background: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-
-/* FROM-TO */
-.from-to-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-left: 4px solid var(--navy-mid); padding: 40px; border-radius: 2px; margin-top: 48px; }
-.from-to-arrow { font-size: 20px; font-weight: 700; color: var(--orange); line-height: 1.5; margin-bottom: 20px; }
-.from-to-text { font-size: 16px; color: var(--white); line-height: 1.7; }
+.governance-questions li::before { content: counter(gov-q); font-size: 14px; font-weight: 700; color: var(--orange); background: var(--white); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
 
 /* ABOUT CRAIG */
 .about { background: var(--white); }
@@ -185,13 +182,13 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   <a href="#" class="nav-logo">The Transformation <span>Brief</span></a>
   <ul class="nav-links">
     <li><a href="#blueprint">The Blueprint</a></li>
-    <li><a href="#this-week">This Week's Issue</a></li>
+    <li><a href="#this-week">What To Expect</a></li>
     <li><a href="#about">About Craig</a></li>
   </ul>
   <a href="https://www.linkedin.com/newsletters/7445765347598684160/" target="_blank" class="nav-cta">Subscribe Free</a>
 </nav>
 
-<!-- HERO (keep identical) -->
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-grid"></div>
   <div class="hero-accent"></div>
@@ -221,7 +218,7 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   </div>
 </section>
 
-<!-- THESIS (keep identical) -->
+<!-- THESIS -->
 <div class="thesis">
   <div class="thesis-inner">
     <div class="thesis-quote-mark">&ldquo;</div>
@@ -232,7 +229,7 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   </div>
 </div>
 
-<!-- BLUEPRINT (keep identical) -->
+<!-- BLUEPRINT -->
 <section class="blueprint" id="blueprint">
   <div class="section-inner">
     <p class="section-label">The Framework</p>
@@ -273,80 +270,78 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   </div>
 </section>
 
-<!-- THIS WEEK'S ISSUE (Issue 03 content) -->
+<!-- WHAT TO EXPECT -->
 <section class="this-week" id="this-week">
   <div class="section-inner">
-    <p class="section-label">Issue 03 &middot; Week of 7 April to 11 April 2026</p>
-    <h2 class="section-title" style="color: var(--white);">This week's signal</h2>
-    <p class="section-intro" style="color: rgba(255,255,255,0.7);">Weekly intelligence for leaders navigating AI transformation, through the lens of management, governance, and behaviour, not technology.</p>
+    <p class="section-label">What You Will Receive</p>
+    <h2 class="section-title">Every week, one clear brief</h2>
+    <p class="section-intro">Each edition of The Transformation Brief filters the noise into three components, delivered every Friday morning to leaders who need signal, not volume.</p>
 
-    <!-- Lead signal -->
     <div class="signal-card">
       <div class="signal-meta">
-        <span class="signal-source">Security Boulevard / Adversa AI</span>
-        <span class="signal-score">10/10</span>
+        <span class="signal-source">Lead Signal</span>
+        <span class="signal-score">Scored And Filtered</span>
       </div>
-      <h3 class="signal-headline">Half of enterprises cannot see what their AI agents are doing</h3>
-      <p class="signal-summary">The 1H 2026 State of AI and API Security Report confirms what governance advocates have feared: 48.9% of organisations are entirely blind to machine-to-machine traffic generated by their own AI agents, and 48.3% cannot distinguish legitimate agents from malicious bots. This is not a technology gap, it is a management failure. When nearly half of enterprises cannot answer the question "what did our agents do today?", the conversation is no longer about platform capability, it is about operational accountability. The BVF Governance and Risk dimension would score most of these deployments below threshold.</p>
+      <h3 class="signal-headline">The one development that matters most this week</h3>
+      <p class="signal-summary">Each edition opens with the single most consequential signal for AI transformation leaders, scored against the Blueprint framework and analysed through the lens of management, governance, and behaviour, not technology. Sources include Harvard Business Review, McKinsey, Gartner, the EU regulatory landscape, and enterprise case studies from the frontline.</p>
     </div>
 
-    <!-- On the radar -->
-    <p class="section-label" style="margin-top: 48px;">On the radar</p>
+    <p class="section-label" style="margin-top: 48px;">Every Edition Also Includes</p>
     <div class="radar-grid">
       <div class="radar-item">
-        <p class="radar-source">Kennedys Law &middot; 9/10</p>
-        <h4 class="radar-headline">EU AI Act: four months to full enforcement, no grace period</h4>
-        <p class="radar-summary">August 2, 2026 is the date every transformation leader needs on their wall. Annex III high-risk AI systems become fully enforceable with penalties up to EUR 35 million or 7% of global turnover. Organisations still treating compliance as a parallel workstream rather than an integrated governance layer are running out of runway.</p>
+        <p class="radar-source">On The Radar</p>
+        <h4 class="radar-headline">Five signals worth watching</h4>
+        <p class="radar-summary">The developments, regulatory shifts, and enterprise moves that sit just below the lead signal. Each one scored, sourced, and positioned against the six drivers of the AI Readiness Blueprint.</p>
       </div>
       <div class="radar-item">
-        <p class="radar-source">BCG Publications &middot; 9/10</p>
-        <h4 class="radar-headline">70% of AI value comes from organisational transformation, not technology</h4>
-        <p class="radar-summary">BCG's latest research quantifies what the best transformation leaders already know: roughly 10% of AI value comes from algorithms, 20% from the technology stack, and the remaining 70% from change management, workforce transformation, and organisational redesign.</p>
+        <p class="radar-source">The Reframing Question</p>
+        <h4 class="radar-headline">One question to sit with</h4>
+        <p class="radar-summary">Each edition closes with one question designed to challenge the assumptions behind your current transformation approach. Not a recommendation, a reframe. The kind of question that changes what you do on Monday morning.</p>
       </div>
       <div class="radar-item">
-        <p class="radar-source">Becker's Hospital Review &middot; 9/10</p>
-        <h4 class="radar-headline">Healthcare AI agents: kill switches, guardrails, and the debate over autonomy</h4>
-        <p class="radar-summary">Health system IT leaders are now actively debating how much autonomy to grant agentic AI. The smartest organisations are implementing full audit logs, real-time performance dashboards, strict permissions, and kill switches.</p>
+        <p class="radar-source">Sources</p>
+        <h4 class="radar-headline">Research-grounded, not opinion-led</h4>
+        <p class="radar-summary">Every signal is traced to a named source, from peer-reviewed research and tier-one consulting firms to regulatory bodies and enterprise case data. No hot takes, no hype, no filler.</p>
       </div>
       <div class="radar-item">
-        <p class="radar-source">Microsoft &middot; 8/10</p>
-        <h4 class="radar-headline">Microsoft launches Agent 365 governance toolkit</h4>
-        <p class="radar-summary">Microsoft's release of Agent 365 signals that the hyperscalers now recognise agent governance as a product category, not an afterthought.</p>
+        <p class="radar-source">Perspective</p>
+        <h4 class="radar-headline">20 years of enterprise pattern recognition</h4>
+        <p class="radar-summary">Each brief is filtered through two decades of global client leadership, transformation at scale, and the proprietary AI Readiness Blueprint. This is not a news digest, it is curated intelligence.</p>
       </div>
-    </div>
-
-    <!-- From → To -->
-    <div class="from-to-card">
-      <p class="from-to-arrow">From: "How many agents can we deploy?" → To: "Can we account for the ones we already have?"</p>
-      <p class="from-to-text">This week's signal is unmistakable. The enterprise world crossed a threshold sometime in the last quarter, the point where agent proliferation outpaced organisational visibility. Nearly half of enterprises cannot monitor their own agent traffic. Regulators are four months from enforcing penalties that assume you can produce audit logs on demand. Healthcare systems are debating kill switches because the alternative, agents acting without oversight, is now a clinical risk. And BCG has put a number on what happens when you invest in the technology without investing in the people and structures around it: you lose 70% of the value. The transformation leaders who will define the next phase are not the ones deploying fastest, they are the ones who can answer, with evidence, what their agents did today and why.</p>
     </div>
   </div>
 </section>
 
-<!-- REFRAMING (updated with Issue 03 question) -->
+<!-- REFRAMING -->
 <section class="reframing">
   <div class="section-inner">
-    <p class="section-label">The reframing question</p>
+    <p class="section-label">The Reframing Question</p>
     <blockquote class="reframing-question">
-      If a regulator, a board member, or a patient asked you for a plain-language summary of every autonomous decision your AI made this week, could you produce one by Friday?
+      Every edition closes with one question that reframes the week's signal. Not advice, a provocation, the kind that changes what you prioritise on Monday morning.
     </blockquote>
   </div>
 </section>
 
-<!-- GOVERNANCE REMINDER (new section) -->
+<!-- THE GOVERNANCE REMINDER -->
 <div class="governance">
   <div class="governance-inner">
-    <h2 class="governance-title">The agentic era: I did it because no one told me not to</h2>
-    <p class="governance-tagline">If you can't read the log, you can't govern the agent.</p>
-    <ol class="governance-questions">
-      <li>How many agents are operating in our organisation today?</li>
-      <li>Can we audit their actions in plain language?</li>
-      <li>Do our associates have real, practical power to override the agents? Show me.</li>
-    </ol>
+    <p class="section-label" style="color: var(--orange); margin-bottom: 24px;">Every Edition Includes</p>
+    <div class="governance-card">
+      <h2 class="governance-title">The agentic era: I did it because no human told me not to</h2>
+      <p class="governance-tagline">If you can't read the log, you can't govern the agent.</p>
+      <ol class="governance-questions">
+        <li>Can I get a plain-language record of everything it did today, and why?</li>
+        <li>How many agents are operating in our organisation today?</li>
+        <li>Who owns each one's outcomes?</li>
+        <li>What are the limits of their authority?</li>
+        <li>Can we audit their actions in plain language?</li>
+        <li>Do our associates have real, practical power to override the agents? Show me.</li>
+      </ol>
+    </div>
   </div>
 </div>
 
-<!-- ABOUT (keep identical) -->
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="section-inner">
     <div class="about-grid">
@@ -402,7 +397,7 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   </div>
 </section>
 
-<!-- SUBSCRIBE (keep identical) -->
+<!-- SUBSCRIBE -->
 <section class="subscribe">
   <h2 class="subscribe-title">Join the transformation brief</h2>
   <p class="subscribe-sub">Every Friday morning, the signals that matter for AI transformation leaders, filtered through the Blueprint framework, with the one question worth sitting with.</p>
@@ -410,12 +405,12 @@ footer { background: var(--navy-dark); padding: 48px; display: flex; align-items
   <p class="subscribe-note">Weekly insights covering AI transformation, governance, and the leadership decisions that determine whether organisations realise the full promise of AI</p>
 </section>
 
-<!-- FOOTER (keep identical) -->
+<!-- FOOTER -->
 <footer>
   <span class="footer-logo">The Transformation <span>Brief</span></span>
   <div class="footer-links">
     <a href="#blueprint">The Blueprint</a>
-    <a href="#this-week">This Week's Issue</a>
+    <a href="#this-week">What To Expect</a>
     <a href="#about">About Craig</a>
     <a href="https://www.linkedin.com/newsletters/7445765347598684160/" target="_blank">Subscribe</a>
   </div>
