@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Thank you | The Transformation Brief</title>
+<meta name="description" content="Your answer has been counted. It will appear in the next Blueprint Index." />
+<meta name="robots" content="noindex, nofollow" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #1B3A5C;
+    --navy-dark: #122840;
+    --orange: #C47A2B;
+    --orange-light: #d9953a;
+    --white: #ffffff;
+    --off-white: #f5f4f0;
+    --light-grey: #e8ecf1;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
+    background: var(--off-white);
+    color: var(--navy);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(27, 58, 92, 0.97);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 64px;
+  }
+  .nav-logo { color: var(--white); font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-decoration: none; }
+  .nav-logo span { color: var(--orange); }
+  .nav-back { color: rgba(255,255,255,0.75); font-size: 13px; text-decoration: none; letter-spacing: 0.04em; }
+  .nav-back:hover { color: var(--white); }
+
+  main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+  .card {
+    background: var(--white);
+    width: 100%; max-width: 640px;
+    padding: 64px 56px 56px;
+    border-radius: 4px;
+    box-shadow: 0 8px 30px rgba(18, 40, 64, 0.08);
+    position: relative;
+    text-align: left;
+  }
+  .card::before {
+    content: ''; position: absolute; left: 0; top: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--orange) 0%, var(--navy) 100%);
+    border-radius: 4px 4px 0 0;
+  }
+
+  .check {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    font-size: 24px; font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow {
+    color: var(--orange);
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: clamp(24px, 3.2vw, 32px);
+    line-height: 1.25; font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 18px;
+    letter-spacing: -0.005em;
+  }
+  p.lede {
+    font-size: 16px; color: var(--navy);
+    line-height: 1.7; margin-bottom: 24px;
+  }
+  p.small {
+    font-size: 14px; color: var(--navy); opacity: 0.7;
+    line-height: 1.6;
+  }
+
+  .actions { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 12px 24px;
+    border-radius: 3px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent; color: var(--navy);
+    padding: 12px 20px;
+    border: 1.5px solid var(--light-grey);
+    border-radius: 3px;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.05em;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--orange); color: var(--orange); }
+
+  footer {
+    background: var(--navy-dark);
+    padding: 24px 48px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+  .footer-logo span { color: var(--orange); }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 12px; letter-spacing: 0.04em; }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 20px; }
+    .card { padding: 48px 28px 36px; }
+    footer { padding: 20px; }
+    .actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">The Transformation <span>Brief</span></a>
+  <a href="/" class="nav-back">Back to the brief</a>
+</nav>
+
+<main>
+  <div class="card">
+    <div class="check" aria-hidden="true">&check;</div>
+    <p class="eyebrow">Counted</p>
+    <h1>Your answer is in.</h1>
+    <p class="lede">It joins this month's Blueprint Index, which is published in the next issue of The Transformation Brief. You will see the result on Friday.</p>
+    <p class="small">No email was captured, no name was stored. The only thing we keep is an anonymous token that prevents a device from answering the same question twice.</p>
+
+    <div class="actions">
+      <a href="https://www.linkedin.com/newsletters/7445765347598684160/" target="_blank" class="btn-primary">Subscribe on LinkedIn</a>
+      <a href="/" class="btn-secondary">Back to the brief</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">The Transformation <span>Brief</span></div>
+  <div class="footer-copy">&copy; 2026 Craig Horton Advisory</div>
+</footer>
+
+</body>
+</html>
