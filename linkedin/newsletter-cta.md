@@ -14,7 +14,7 @@ LinkedIn newsletter editor supports basic formatting: bold, italic, bullets, lin
 >
 > *If a regulator asked tomorrow for a plain-language log of every AI agent decision your organisation has made this quarter, could you produce it?*
 >
-> **→ Answer in 15 seconds** (anonymous, no email): **[pulse.craighortonadvisory.com](https://pulse.craighortonadvisory.com)**
+> **→ Answer in 15 seconds** (anonymous, no email): **[brief.craighortonadvisory.com/pulse](https://brief.craighortonadvisory.com/pulse)**
 >
 > The people who answer this week shape the number 180 CHROs read next week. Join the panel.
 
@@ -62,6 +62,6 @@ No em-dashes. Sentence case except references (Blueprint, Blueprint Index, Linke
 
 At the very end of the issue, after the Governance Reminder, add a minimal one-line repeat:
 
-> *Still here? Take the pulse. 15 seconds. [pulse.craighortonadvisory.com](https://pulse.craighortonadvisory.com)*
+> *Still here? Take the pulse. 15 seconds. [brief.craighortonadvisory.com/pulse](https://brief.craighortonadvisory.com/pulse)*
 
 This catches readers who read all the way through but missed the top block. Do not make this second placement any longer, the value is in its brevity.
