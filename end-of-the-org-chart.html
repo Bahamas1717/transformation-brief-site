@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The End of the Org Chart | Craig Horton Advisory</title>
+<meta name="description" content="A paper on the Human-Agent Operating Model, how the human-agent operating model extends a 100-year arc from Taylor to Hamel. Craig Horton, April 2026.">
+<meta name="author" content="Craig Horton">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The End of the Org Chart">
+<meta property="og:description" content="How the human-agent operating model extends a 100-year arc from Taylor to Hamel. A thought leadership paper from Craig Horton Advisory.">
+<meta property="og:site_name" content="Craig Horton Advisory">
+<meta property="og:url" content="https://brief.craighortonadvisory.com/end-of-the-org-chart">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The End of the Org Chart">
+<meta name="twitter:description" content="How the human-agent operating model extends a 100-year arc from Taylor to Hamel.">
+<link rel="canonical" href="https://brief.craighortonadvisory.com/end-of-the-org-chart">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2a47;
+    --navy-deep: #121f36;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --white: #ffffff;
+    --hairline: rgba(26, 42, 71, 0.18);
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 700px) { .container { padding: 0 20px; } }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead .accent-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%);
+  }
+  .masthead .glow {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(226, 163, 88, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner { position: relative; z-index: 2; }
+
+  .masthead .wordmark {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 56px;
+  }
+  .masthead .wordmark .advisory {
+    color: var(--amber-soft);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+  .masthead .paper-kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.32em;
+    margin-bottom: 24px;
+  }
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 72pt;
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    color: white;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 700px) {
+    .masthead { padding: 56px 0 72px; }
+    .masthead h1 { font-size: 42pt; }
+    .masthead .wordmark { margin-bottom: 36px; }
+  }
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 18pt;
+    line-height: 1.4;
+    color: white;
+    margin-bottom: 40px;
+    max-width: 720px;
+  }
+  .masthead .byline {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    color: white;
+    letter-spacing: 0.04em;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ============ SECTIONS ============ */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .section:last-of-type { border-bottom: none; }
+  @media (max-width: 700px) { .section { padding: 56px 0; } }
+
+  .section-kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.32em;
+    color: var(--amber);
+    margin-bottom: 24px;
+  }
+
+  .section h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 40pt;
+    line-height: 1.08;
+    color: var(--navy);
+    letter-spacing: -0.022em;
+    margin-bottom: 20px;
+    max-width: 720px;
+  }
+  @media (max-width: 700px) { .section h2 { font-size: 28pt; } }
+
+  .section-deck {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 17pt;
+    line-height: 1.44;
+    color: var(--navy);
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+  @media (max-width: 700px) { .section-deck { font-size: 14pt; } }
+
+  .body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 1.72;
+    color: var(--navy);
+    margin-bottom: 20px;
+    max-width: 680px;
+  }
+  .body strong { font-weight: 600; color: var(--navy); }
+
+  /* ============ HERO QUOTE + STAT ============ */
+  .hero-row {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    margin-top: 32px;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .hero-row { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .hero-quote-block {
+    padding-left: 24px;
+    border-left: 2px solid var(--amber);
+  }
+  .hero-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 22pt;
+    line-height: 1.32;
+    color: var(--navy);
+    letter-spacing: -0.008em;
+  }
+  .hero-quote .mark { color: var(--amber); font-weight: 600; }
+  .hero-attr {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 9pt;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    margin-top: 20px;
+  }
+  .stat-block {
+    padding: 28px 0 28px 24px;
+    border-left: 2px solid var(--amber);
+  }
+  .stat-number {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 96pt;
+    line-height: 0.9;
+    color: var(--amber);
+    letter-spacing: -0.04em;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .stat-number .pct {
+    font-size: 48pt;
+    color: var(--amber-soft);
+  }
+  .stat-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: var(--navy);
+    margin-top: 10px;
+    max-width: 240px;
+  }
+  .stat-source {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+    margin-top: 10px;
+  }
+
+  /* ============ QUESTION CASCADE ============ */
+  .headline-q {
+    padding: 24px 28px;
+    background: white;
+    border-left: 4px solid var(--amber);
+    margin: 24px 0;
+    max-width: 720px;
+  }
+  .headline-q .q-tag {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.28em;
+    color: var(--amber);
+    margin-bottom: 10px;
+  }
+  .headline-q .q-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 22pt;
+    line-height: 1.24;
+    color: var(--navy);
+    letter-spacing: -0.012em;
+  }
+
+  .triple {
+    margin: 20px 0;
+    padding: 24px 28px;
+    border-left: 2px solid var(--amber);
+    background: white;
+    max-width: 720px;
+  }
+  .triple .triple-tag {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.28em;
+    color: var(--amber);
+    margin-bottom: 14px;
+  }
+  .triple div.q-line {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 15pt;
+    line-height: 1.45;
+    color: var(--navy);
+    letter-spacing: -0.005em;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .triple div.q-line:last-child { border-bottom: none; }
+
+  /* ============ ERA TABLE ============ */
+  .era-table {
+    margin-top: 32px;
+    border-top: 2px solid var(--navy);
+  }
+  .era-header {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    gap: 24px;
+    padding: 14px 0 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .era-header-cell {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    color: var(--amber);
+    letter-spacing: 0.22em;
+  }
+  .era-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr;
+    gap: 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .era-row.final {
+    background: var(--navy);
+    color: white;
+    padding: 20px 24px;
+    margin-top: 8px;
+    border-bottom: none;
+    border-left: 4px solid var(--amber);
+  }
+  .era-row.final .era-innovation,
+  .era-row.final .era-break { color: white; }
+  .era-row.final .era-name { color: white; }
+  .era-row.final .era-year { color: var(--amber-soft); }
+  .era-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.18;
+    color: var(--navy);
+    letter-spacing: -0.008em;
+  }
+  .era-year {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 9pt;
+    color: var(--amber);
+    letter-spacing: 0.14em;
+    margin-top: 4px;
+  }
+  .era-innovation,
+  .era-break {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: var(--navy);
+    align-self: center;
+  }
+  @media (max-width: 700px) {
+    .era-header, .era-row { grid-template-columns: 1fr; gap: 8px; padding: 16px 0; }
+    .era-header-cell { display: none; }
+    .era-innovation::before { content: "Innovation: "; font-weight: 600; }
+    .era-break::before { content: "Assumption: "; font-weight: 600; }
+  }
+
+  /* ============ FOUR MODES ============ */
+  .modes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) { .modes-grid { grid-template-columns: 1fr; } }
+  .mode-card {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 28px 28px 28px;
+    position: relative;
+    min-height: 200px;
+  }
+  .mode-card.accent {
+    background: var(--cream);
+    border-color: var(--amber);
+    border-left-width: 4px;
+  }
+  .mode-card.dark {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+  }
+  .mode-card .mode-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 44pt;
+    line-height: 0.9;
+    color: var(--amber);
+    letter-spacing: -0.03em;
+    position: absolute;
+    top: 24px; right: 28px;
+  }
+  .mode-card.dark .mode-num { color: var(--amber-soft); }
+  .mode-card .mode-tag {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+  }
+  .mode-card.dark .mode-tag { color: var(--amber-soft); }
+  .mode-card .mode-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 20pt;
+    line-height: 1.12;
+    color: var(--navy);
+    letter-spacing: -0.012em;
+    margin: 8px 0 14px;
+    max-width: 220px;
+  }
+  .mode-card.dark .mode-name { color: white; }
+  .mode-card .mode-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .mode-card.dark .mode-text { color: white; }
+  .mode-card .mode-phrase {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--amber);
+    border-top: 1px solid var(--hairline);
+    padding-top: 14px;
+  }
+  .mode-card.dark .mode-phrase {
+    color: var(--amber-soft);
+    border-top-color: rgba(255,255,255,0.2);
+  }
+
+  /* ============ DIAGNOSTIC CALLOUT ============ */
+  .dim-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 700px) { .dim-grid { grid-template-columns: 1fr; } }
+  .dim-cell {
+    padding: 18px 22px 18px 24px;
+    background: white;
+    border-left: 3px solid var(--amber);
+    border-top: 1px solid var(--hairline);
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .dim-cell .dim-num {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+  .dim-cell .dim-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 16pt;
+    line-height: 1.18;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .dim-cell .dim-q {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+
+  .cta-block {
+    background: var(--navy);
+    color: white;
+    padding: 32px 36px;
+    margin-top: 32px;
+    border-left: 5px solid var(--amber);
+    max-width: 720px;
+  }
+  .cta-block .cta-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.28em;
+    color: var(--amber-soft);
+    margin-bottom: 14px;
+  }
+  .cta-block .cta-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 20pt;
+    line-height: 1.22;
+    color: white;
+    letter-spacing: -0.012em;
+    margin-bottom: 18px;
+  }
+  .cta-block .cta-action {
+    display: inline-block;
+    background: var(--amber);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 10pt;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .cta-block .cta-action:hover { background: var(--amber-soft); border: none; color: white; }
+
+  /* ============ VOID CALLOUT ============ */
+  .void {
+    margin: 24px 0 32px;
+    padding: 20px 28px;
+    background: var(--cream);
+    border-left: 2px solid var(--amber);
+    max-width: 720px;
+  }
+  .void-tag {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.26em;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .void-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--navy);
+  }
+
+  /* ============ PLAYBOOK ============ */
+  .playbook-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  @media (max-width: 900px) { .playbook-grid { grid-template-columns: 1fr; } }
+  .phase {
+    padding: 26px 24px 24px;
+    background: white;
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--amber);
+    display: flex;
+    flex-direction: column;
+  }
+  .phase.amber {
+    background: var(--cream);
+  }
+  .phase.navy {
+    background: var(--navy);
+    color: white;
+    border-color: var(--navy);
+    border-top-color: var(--amber);
+  }
+  .phase .phase-days {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.22em;
+    color: var(--amber);
+    margin-bottom: 6px;
+  }
+  .phase.navy .phase-days { color: var(--amber-soft); }
+  .phase .phase-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 28pt;
+    line-height: 1;
+    color: var(--navy);
+    letter-spacing: -0.018em;
+    margin-bottom: 18px;
+  }
+  .phase.navy .phase-name { color: white; }
+  .phase .phase-item {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--navy);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .phase.navy .phase-item {
+    color: white;
+    border-bottom-color: rgba(255,255,255,0.15);
+  }
+  .phase .phase-item:last-of-type { border-bottom: none; }
+  .phase .phase-item strong { color: var(--amber); font-weight: 600; }
+  .phase.navy .phase-item strong { color: var(--amber-soft); }
+  .phase .phase-output {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--amber);
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .phase.navy .phase-output { color: white; }
+  .phase .output-tag {
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 7.5pt;
+    letter-spacing: 0.26em;
+    color: var(--amber);
+    margin-bottom: 4px;
+  }
+  .phase.navy .output-tag { color: var(--amber-soft); }
+
+  /* ============ REFRAME ============ */
+  .reframe {
+    background: var(--cream);
+    padding: 120px 0;
+    position: relative;
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  @media (max-width: 700px) { .reframe { padding: 72px 0; } }
+  .reframe-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+  }
+  .reframe-pull {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 36pt;
+    line-height: 1.18;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+  @media (max-width: 700px) { .reframe-pull { font-size: 24pt; } }
+  .reframe-pull .mark { color: var(--amber); font-weight: 700; }
+  .reframe-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--amber);
+    margin: 32px 0 20px;
+  }
+  .reframe-follow {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 15pt;
+    line-height: 1.5;
+    color: var(--navy);
+    max-width: 620px;
+  }
+  .hamel-attribution {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+  }
+  .hamel-attribution .source {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.24em;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .hamel-attribution .quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 13pt;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--navy);
+    color: white;
+    padding: 72px 0 48px;
+  }
+  .footer-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .footer .subscribe-kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.32em;
+    color: var(--amber-soft);
+    margin-bottom: 20px;
+  }
+  .footer h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 32pt;
+    line-height: 1.12;
+    color: white;
+    letter-spacing: -0.018em;
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+  @media (max-width: 700px) { .footer h3 { font-size: 24pt; } }
+  .footer .subscribe-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 1.65;
+    color: white;
+    margin-bottom: 28px;
+    max-width: 640px;
+  }
+  .footer .subscribe-btn {
+    display: inline-block;
+    background: var(--amber);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    letter-spacing: 0.14em;
+    padding: 16px 32px;
+    text-decoration: none;
+    border: none;
+    transition: background 0.2s;
+    margin-bottom: 48px;
+  }
+  .footer .subscribe-btn:hover { background: var(--amber-soft); border: none; color: white; }
+
+  .author-block {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    color: white;
+  }
+  @media (max-width: 700px) {
+    .author-block { grid-template-columns: 1fr; }
+  }
+  .author-block .author-tag {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.24em;
+    color: var(--amber-soft);
+  }
+  .author-block p {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: white;
+  }
+  .footer .colophon {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9pt;
+    color: white;
+    line-height: 1.7;
+  }
+  .footer .colophon a {
+    color: var(--amber-soft);
+    border-bottom-color: var(--amber-soft);
+  }
+  .footer .colophon a:hover {
+    color: white;
+    border-bottom-color: white;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="accent-strip"></div>
+  <div class="glow"></div>
+  <div class="container masthead-inner">
+    <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
+    <div class="paper-kicker">A Paper on the Human-Agent Operating Model</div>
+    <h1>The End of the Org Chart</h1>
+    <p class="subtitle">How the human-agent operating model extends a 100-year arc from Taylor to Hamel.</p>
+    <div class="byline">
+      <span>By Craig Horton, AI Transformation Advisor</span>
+      <span>April 2026 &nbsp;·&nbsp; brief.craighortonadvisory.com</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ EXECUTIVE SUMMARY ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">Executive Summary</div>
+    <h2>The 100-year operating system, with AI layered on top.</h2>
+    <p class="section-deck">Gary Hamel calls it inheritance bureaucracy. I call what the industry currently calls transformation, decoration.</p>
+
+    <p class="body">Most organisations are still running a 100-year-old operating system, and have now added AI tools on top of it. As most of you know, I've been a big fan of Gary Hamel for several years, he calls this &ldquo;inheritance bureaucracy&rdquo;, I call what the industry currently calls transformation, &ldquo;decoration&rdquo;.</p>
+
+    <p class="body">The real transformation sits underneath the technology, in the operating model, and when AI agents can reason, decide, and act, the question has to change.</p>
+
+    <div class="hero-row">
+      <div class="hero-quote-block">
+        <div class="hero-quote">Is your org chart fit for the <span class="mark">future</span>, or an <span class="mark">archaeological record</span> of decisions made by people who never imagined AI would be their colleague?</div>
+        <div class="hero-attr">Craig Horton, opening question</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">94<span class="pct">%</span></div>
+        <div class="stat-label">of leaders are <strong>not</strong> making progress on designing human-AI interactions.</div>
+        <div class="stat-source">Deloitte, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUESTION CASCADE ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">The Question Cascade</div>
+    <h2>One strategic question, one governance question, three operational questions.</h2>
+    <p class="section-deck">Answer these honestly, and the shape of the redesign starts to show itself.</p>
+
+    <div class="headline-q">
+      <span class="q-tag">Strategic</span>
+      <div class="q-text">How do we maximise the value of humans and machines working together?</div>
+    </div>
+
+    <p class="body">The question every leader I speak with is circling, and the one Deloitte's 2026 Global Human Capital Trends puts at the centre of the next era of work. The governance question follows immediately.</p>
+
+    <div class="headline-q">
+      <span class="q-tag">Governance</span>
+      <div class="q-text">Who has the authority to decide when algorithms act and when humans intervene?</div>
+    </div>
+
+    <p class="body">And then the three operational questions, the ones that force the redesign itself.</p>
+
+    <div class="triple">
+      <span class="triple-tag">Operational</span>
+      <div class="q-line">What work still needs a human on it?</div>
+      <div class="q-line">What is a team, when half the team is an agent?</div>
+      <div class="q-line">What is hierarchy for, now that coordination is no longer the scarce resource?</div>
+    </div>
+
+    <p class="body">The answers require a different design, and you cannot get there by layering agents on top of the architecture you already have.</p>
+  </div>
+</section>
+
+<!-- ============ 100-YEAR ARC ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">The 100-year Arc</div>
+    <h2>From Taylor to Hamel, a century of assumptions that broke.</h2>
+    <p class="section-deck">Each era of management design was rational for its moment. None of them anticipated a world where some of the workers would not be human.</p>
+
+    <div class="era-table">
+      <div class="era-header">
+        <div class="era-header-cell">Era</div>
+        <div class="era-header-cell">Innovation</div>
+        <div class="era-header-cell">Assumption That Broke It</div>
+      </div>
+
+      <div class="era-row">
+        <div class="era-name">Scientific Management<span class="era-year">1911, Taylor</span></div>
+        <div class="era-innovation">Task specialisation and measurement</div>
+        <div class="era-break">Only humans work, managers must control</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">Knowledge Worker<span class="era-year">1960s, Drucker</span></div>
+        <div class="era-innovation">Worker as asset, not cost</div>
+        <div class="era-break">Hierarchy still controls knowledge flow</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">Matrix<span class="era-year">1960s+</span></div>
+        <div class="era-innovation">Dual reporting for flexibility</div>
+        <div class="era-break">More reporting lines, more coordination cost</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">Business Units<span class="era-year">1980s+</span></div>
+        <div class="era-innovation">Decentralised accountability</div>
+        <div class="era-break">Silos without integration</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">BPR<span class="era-year">1993, Hammer and Champy</span></div>
+        <div class="era-innovation">Radical process redesign</div>
+        <div class="era-break">Redesign stopped at process, power structure intact</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">Agile<span class="era-year">2000s+</span></div>
+        <div class="era-innovation">Team autonomy and iteration</div>
+        <div class="era-break">Teams agile, structures not</div>
+      </div>
+      <div class="era-row">
+        <div class="era-name">Humanocracy<span class="era-year">2020, Hamel and Zanini</span></div>
+        <div class="era-innovation">Bureaucracy as the tax on human capability</div>
+        <div class="era-break">Incentive to defend bureaucracy underestimated</div>
+      </div>
+      <div class="era-row final">
+        <div class="era-name">Human-Agent Model<span class="era-year">2025+, Horton</span></div>
+        <div class="era-innovation">Humans and agents as one system</div>
+        <div class="era-break">The one we are writing now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOUR MODES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">The Human-Agent Operating Model</div>
+    <h2>Four modes your workflows sit in, whether you designed them that way or not.</h2>
+    <p class="section-deck">Mode 3 is where the step-change lives, Mode 4 is the frontier, and most organisations are stuck at Mode 2, the copilot ceiling.</p>
+
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="mode-num">01</div>
+        <div class="mode-tag">Mode 01</div>
+        <div class="mode-name">Human Solo</div>
+        <p class="mode-text">Humans do all the work, AI is absent or cosmetic. The org chart is the operating system, and for workflows needing deep human judgement, ethical reasoning, or relationship management, this is the right place to stay.</p>
+        <div class="mode-phrase">The legacy state, still correct for some work.</div>
+      </div>
+
+      <div class="mode-card">
+        <div class="mode-num">02</div>
+        <div class="mode-tag">Mode 02</div>
+        <div class="mode-name">Human-led,<br/>Agent-assisted</div>
+        <p class="mode-text">Humans decide and act, AI tools suggest, draft, or accelerate. Copilot territory, where most AI transformation programmes stall. A 10 to 15 percent gain, and then the ceiling.</p>
+        <div class="mode-phrase">The copilot ceiling, where most of you sit today.</div>
+      </div>
+
+      <div class="mode-card accent">
+        <div class="mode-num">03</div>
+        <div class="mode-tag">Mode 03</div>
+        <div class="mode-name">Agent-led,<br/>Human-governed</div>
+        <p class="mode-text">AI agents execute end-to-end, humans set goals, handle exceptions, and hold accountability. The workflow has been redesigned around what agents can do, and willingness to redesign is what separates the organisations that get here.</p>
+        <div class="mode-phrase">The step-change, where the real value lives.</div>
+      </div>
+
+      <div class="mode-card dark">
+        <div class="mode-num">04</div>
+        <div class="mode-tag">Mode 04</div>
+        <div class="mode-name">Fully<br/>Autonomous</div>
+        <p class="mode-text">Agents operate within defined guardrails. Humans design the system, the system runs the steps. Real-time governance, continuous monitoring, automated escalation. Operational today in procurement and healthcare.</p>
+        <div class="mode-phrase">The frontier, already shipping.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIAGNOSTIC ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">The Diagnostic</div>
+    <h2>Eight dimensions of readiness, score yourself honestly.</h2>
+    <p class="section-deck">To move from Mode 2 to Mode 3, you need to see where you sit across eight dimensions of the operating model, dimension by dimension, without the aspiration that typically hides in strategy decks.</p>
+
+    <div class="dim-grid">
+      <div class="dim-cell">
+        <div class="dim-num">01</div>
+        <div class="dim-name">Workflow Design</div>
+        <div class="dim-q">Are your processes designed for AI, or is AI layered on legacy?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">02</div>
+        <div class="dim-name">Decision Rights</div>
+        <div class="dim-q">Who decides, and how fast do decisions move?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">03</div>
+        <div class="dim-name">Team Structure</div>
+        <div class="dim-q">Are your teams composed for human-agent collaboration?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">04</div>
+        <div class="dim-name">Governance and Accountability</div>
+        <div class="dim-q">Can you govern agents that operate continuously?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">05</div>
+        <div class="dim-name">Data Foundation</div>
+        <div class="dim-q">Is your data infrastructure ready to fuel agentic operations?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">06</div>
+        <div class="dim-name">Talent and Roles</div>
+        <div class="dim-q">Are you developing people for the human-agent future?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">07</div>
+        <div class="dim-name">Culture and Leadership</div>
+        <div class="dim-q">Do your leaders enable or block the transition?</div>
+      </div>
+      <div class="dim-cell">
+        <div class="dim-num">08</div>
+        <div class="dim-name">Measurement and Value</div>
+        <div class="dim-q">Are you measuring coordination cost, agent contribution, and outcomes?</div>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <div class="cta-label">Run the diagnostic</div>
+      <div class="cta-headline">Each dimension scores Mode 1 to Mode 4. The aggregate maps to a maturity stage from Legacy Hierarchy through to Agentic Enterprise, with recommendations for the four lowest dimensions and an organisational drag estimate.</div>
+      <a class="cta-action" href="./diagnostic.html">Open the interactive diagnostic</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 90-DAY PLAYBOOK ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-kicker">The First 90 Days</div>
+    <h2>From a diagnostic score to a shipped redesign, in ninety days.</h2>
+    <p class="section-deck">The playbook the research firms do not give you. A concrete sequence from score to redesigned workflow, measured and documented.</p>
+
+    <div class="void">
+      <span class="void-tag">The void this fills</span>
+      <p class="void-text">McKinsey, Deloitte, Gartner, and BCG describe the agentic future in detail. None of them give you a sequenced ninety-day path from where you are today to a workflow redesigned, shipped, and measured. This is that path, the one I use with leadership teams inside the building.</p>
+    </div>
+
+    <div class="playbook-grid">
+      <div class="phase">
+        <div class="phase-days">Days 1 to 30</div>
+        <div class="phase-name">Map</div>
+        <div class="phase-item"><strong>Run the diagnostic</strong> across the senior team, honestly, and identify the two lowest dimensions.</div>
+        <div class="phase-item"><strong>Pick one workflow</strong> inside those dimensions that is high-volume, high-friction, and owned by someone who will return your calls.</div>
+        <div class="phase-item"><strong>Build the gap map</strong>, current state versus target state, and turn it into a redesign brief.</div>
+        <div class="phase-output">
+          <span class="output-tag">Output</span>
+          Scoring document, gap map, one workflow picked.
+        </div>
+      </div>
+
+      <div class="phase amber">
+        <div class="phase-days">Days 31 to 60</div>
+        <div class="phase-name">Redesign</div>
+        <div class="phase-item"><strong>Redesign the workflow AI-first</strong>, with agents executing core steps and humans governing at pre-flight, not at runtime.</div>
+        <div class="phase-item"><strong>Recruit or assign the agent orchestrator</strong>, give it budget authority and a named outcome.</div>
+        <div class="phase-item"><strong>Wire the governance</strong> into the workflow itself, embedded monitoring, automated escalation, clear human boundaries.</div>
+        <div class="phase-output">
+          <span class="output-tag">Output</span>
+          Redesigned workflow in staging, governance playbook, orchestrator in post.
+        </div>
+      </div>
+
+      <div class="phase navy">
+        <div class="phase-days">Days 61 to 90</div>
+        <div class="phase-name">Prove</div>
+        <div class="phase-item"><strong>Ship the workflow to production</strong>, with the governance live and a rollback path defined.</div>
+        <div class="phase-item"><strong>Measure coordination cost reclaimed</strong>, decision cycle time, and the hours returned to human work that actually needs a human.</div>
+        <div class="phase-item"><strong>Document the pattern</strong> in a one-pager the next function can lift straight off the shelf.</div>
+        <div class="phase-output">
+          <span class="output-tag">Output</span>
+          Production deployment, before and after metrics, pattern library entry one.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFRAME ============ -->
+<section class="reframe">
+  <div class="reframe-inner">
+    <div class="section-kicker" style="color: var(--amber);">The Reframe</div>
+    <div class="reframe-pull">
+      If you were designing your organisation from scratch today, knowing that AI agents could handle <span class="mark">40 percent</span> of current tasks, would you build the structure you have now<span class="mark">?</span>
+    </div>
+    <div class="reframe-divider"></div>
+    <p class="reframe-follow">If the answer is no, stop optimising what exists and start designing what should.</p>
+
+    <div class="hamel-attribution">
+      <div class="source">After Gary Hamel, Q:A Ratio, November 2023</div>
+      <div class="quote">&ldquo;Managers default to answers and leaders default to questions. In his framing, a manager's Q:A ratio sits below 1 and a leader's sits above 1.&rdquo;</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="subscribe-kicker">Stay in the loop</div>
+    <h3>A weekly signal for senior leaders navigating AI transformation.</h3>
+    <p class="subscribe-text">The Transformation Brief lands Friday mornings. One lead signal, three radar picks, one counter-voice, one reframing question. Over 400 subscribers in the first two weeks, built for leaders who have to decide something on Monday.</p>
+    <a class="subscribe-btn" href="https://brief.craighortonadvisory.com">Subscribe to The Transformation Brief</a>
+
+    <div class="author-block">
+      <div class="author-tag">About the Author</div>
+      <p>Craig Horton is an AI Transformation Advisor and the builder of aibvf-mcp, the open Model Context Protocol server for scoring AI initiatives, published to the registry in April 2026. He publishes The Transformation Brief, a weekly intelligence product for senior leaders navigating AI transformation. He holds an Executive Leadership distinction from Saïd Business School, University of Oxford, and begins a Global Executive MBA with Artificial Intelligence at the University of Hertfordshire in May 2026.</p>
+    </div>
+
+    <div class="colophon">
+      <a href="https://brief.craighortonadvisory.com">brief.craighortonadvisory.com</a> &nbsp;·&nbsp;
+      <a href="https://linkedin.com/in/craig-horton-ai">linkedin.com/in/craig-horton-ai</a> &nbsp;·&nbsp;
+      <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a>
+      <br/>
+      &copy; 2026 Craig Horton Advisory. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

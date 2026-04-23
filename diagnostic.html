@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Human-Agent Operating Model Diagnostic | Craig Horton Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2a47;
+    --navy-deep: #121f36;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --white: #ffffff;
+    --hairline: rgba(26, 42, 71, 0.18);
+    --hairline-strong: rgba(26, 42, 71, 0.32);
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+
+  /* ============ MASTHEAD ============ */
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 60px 40px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead .accent-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%);
+  }
+  .masthead .glow {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(226, 163, 88, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .masthead .wordmark {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 13pt;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 40px;
+  }
+  .masthead .wordmark .advisory {
+    color: var(--amber-soft);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+  .masthead .kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.32em;
+    text-transform: none;
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 48pt;
+    line-height: 1.04;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 16pt;
+    line-height: 1.45;
+    color: white;
+    max-width: 640px;
+  }
+
+  /* ============ CONTAINER ============ */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+  }
+
+  .section {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 48px 48px 40px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 700px) {
+    .container { padding: 32px 20px; }
+    .section { padding: 32px 24px; }
+  }
+
+  .section-kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    letter-spacing: 0.32em;
+    color: var(--amber);
+    text-transform: none;
+    margin-bottom: 22px;
+  }
+
+  .section h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 30pt;
+    line-height: 1.08;
+    color: var(--navy);
+    letter-spacing: -0.018em;
+    margin-bottom: 14px;
+    max-width: 680px;
+  }
+
+  .section-deck {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: var(--navy);
+    margin-bottom: 32px;
+    max-width: 680px;
+  }
+
+  /* ============ FOUR MODES BANNER ============ */
+  .modes-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hairline-strong);
+    border: 1px solid var(--hairline-strong);
+    margin-bottom: 24px;
+  }
+  @media (max-width: 700px) {
+    .modes-banner { grid-template-columns: repeat(2, 1fr); }
+  }
+  .mode-box {
+    background: white;
+    padding: 22px 18px;
+    position: relative;
+    min-height: 170px;
+  }
+  .mode-box.mode-3 {
+    background: var(--cream);
+    box-shadow: inset 0 3px 0 var(--amber);
+  }
+  .mode-box.mode-4 {
+    background: var(--navy);
+    color: white;
+  }
+  .mode-box .mode-num {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.24em;
+    text-transform: none;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .mode-box.mode-4 .mode-num { color: var(--amber-soft); }
+  .mode-box .mode-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.12;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .mode-box.mode-4 .mode-name { color: white; }
+  .mode-box .mode-desc {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 9.5pt;
+    line-height: 1.55;
+    color: var(--navy);
+  }
+  .mode-box.mode-4 .mode-desc { color: white; }
+
+  .spectrum {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+  }
+  .spectrum .label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: none;
+    color: var(--navy);
+    white-space: nowrap;
+  }
+  .spectrum .line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--navy), var(--amber));
+    position: relative;
+  }
+  .spectrum .line::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    border-left: 8px solid var(--amber);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+
+  /* ============ PROGRESS ============ */
+  .progress {
+    margin-bottom: 32px;
+  }
+  .progress-bar {
+    height: 2px;
+    background: var(--hairline);
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--amber);
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 8.5pt;
+    color: var(--navy);
+    letter-spacing: 0.14em;
+    text-transform: none;
+    margin-top: 8px;
+    text-align: right;
+  }
+
+  /* ============ DIMENSION ============ */
+  .dimension {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .dimension:first-of-type { padding-top: 0; }
+  .dimension:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .dimension-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    gap: 16px;
+  }
+  .dimension-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 20pt;
+    color: var(--navy);
+    letter-spacing: -0.012em;
+    flex: 1;
+  }
+  .dimension-title .num {
+    color: var(--amber);
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.24em;
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+  .dimension-badge {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: none;
+    padding: 4px 10px;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    background: transparent;
+    display: none;
+    white-space: nowrap;
+  }
+  .dimension-badge.set { display: inline-block; }
+
+  .dimension-question {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--navy);
+    margin-bottom: 20px;
+    max-width: 640px;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 700px) {
+    .options { grid-template-columns: repeat(2, 1fr); }
+  }
+  .option {
+    background: white;
+    border: 1px solid var(--hairline);
+    padding: 16px 14px 16px 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    text-align: left;
+  }
+  .option:hover {
+    border-color: var(--amber);
+    background: var(--cream);
+  }
+  .option.selected {
+    border-color: var(--amber);
+    background: var(--cream);
+    box-shadow: inset 3px 0 0 var(--amber);
+    padding-left: 11px;
+  }
+  .option .opt-mode {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 7.5pt;
+    letter-spacing: 0.24em;
+    text-transform: none;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .option .opt-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+
+  /* ============ RESULTS ============ */
+  .results {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px 40px;
+    display: none;
+  }
+  .results.visible { display: block; }
+  @media (max-width: 700px) {
+    .results { padding: 0 20px 32px; }
+  }
+
+  .results-hero {
+    background: var(--navy);
+    color: white;
+    padding: 56px 48px;
+    position: relative;
+    margin-bottom: 40px;
+    border-left: 5px solid var(--amber);
+    overflow: hidden;
+  }
+  .results-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; right: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(226, 163, 88, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .results-hero .rh-inner { position: relative; z-index: 2; }
+  .results-hero .score-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 0.32em;
+    text-transform: none;
+    color: var(--amber-soft);
+    margin-bottom: 16px;
+  }
+  .results-hero .score-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 82pt;
+    line-height: 0.9;
+    color: var(--amber-soft);
+    letter-spacing: -0.035em;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .results-hero .score-display .out-of {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14pt;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+  .results-hero .maturity-stage {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 22pt;
+    color: white;
+    margin-top: 16px;
+    letter-spacing: -0.01em;
+  }
+  .results-hero .maturity-intro {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: white;
+    margin-top: 14px;
+    max-width: 540px;
+  }
+
+  /* Dimension results */
+  .dim-result {
+    display: grid;
+    grid-template-columns: 210px 1fr 90px;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: center;
+  }
+  .dim-result:last-child { border-bottom: none; }
+  @media (max-width: 700px) {
+    .dim-result { grid-template-columns: 1fr; gap: 8px; }
+  }
+  .dim-result-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 10pt;
+    color: var(--navy);
+  }
+  .dim-result-bar-bg {
+    height: 4px;
+    background: var(--hairline);
+    overflow: hidden;
+  }
+  .dim-result-bar {
+    height: 100%;
+    transition: width 0.6s ease;
+  }
+  .dim-result-mode {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: 0.2em;
+    text-align: right;
+    text-transform: none;
+  }
+
+  /* Recommendations */
+  .recommendation {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .recommendation:last-child { border-bottom: none; }
+  .rec-priority {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.28em;
+    text-transform: none;
+    margin-bottom: 10px;
+    color: var(--amber);
+  }
+  .rec-priority::before {
+    content: '●';
+    margin-right: 8px;
+    color: var(--amber);
+  }
+  .rec-priority.medium::before { content: '◐'; }
+  .rec-priority.low { color: var(--navy); }
+  .rec-priority.low::before { content: '○'; color: var(--navy); }
+
+  .rec-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 1.18;
+    color: var(--navy);
+    letter-spacing: -0.012em;
+    margin-bottom: 10px;
+  }
+  .rec-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10.5pt;
+    line-height: 1.66;
+    color: var(--navy);
+    max-width: 680px;
+  }
+
+  /* Reframe box */
+  .reframe-box {
+    background: var(--cream);
+    border-left: 3px solid var(--amber);
+    padding: 28px 32px;
+    margin-top: 24px;
+  }
+  .reframe-box .reframe-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.32em;
+    text-transform: none;
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+  .reframe-box .reframe-question {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 17pt;
+    line-height: 1.32;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  /* Drag section */
+  .drag-section {
+    text-align: left;
+    padding: 12px 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .drag-section { grid-template-columns: 1fr; gap: 16px; }
+  }
+  .drag-number {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 76pt;
+    line-height: 0.9;
+    color: var(--amber);
+    letter-spacing: -0.035em;
+  }
+  .drag-copy .drag-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 8pt;
+    letter-spacing: 0.28em;
+    text-transform: none;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .drag-copy .drag-headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 18pt;
+    line-height: 1.2;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .drag-copy .drag-text {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--navy);
+    max-width: 460px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 32px 0 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  @media (max-width: 700px) {
+    .cta-section { flex-direction: column; }
+  }
+  .cta-btn {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 9.5pt;
+    letter-spacing: 0.14em;
+    text-transform: none;
+    padding: 14px 26px;
+    border: 1.5px solid var(--navy);
+    background: var(--navy);
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+    text-align: center;
+  }
+  .cta-btn:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: white;
+  }
+  .cta-btn.secondary {
+    background: white;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+  .cta-btn.secondary:hover {
+    background: var(--navy);
+    color: white;
+  }
+  .cta-btn.amber {
+    background: var(--amber);
+    border-color: var(--amber);
+  }
+  .cta-btn.amber:hover {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--navy);
+    color: white;
+    padding: 48px 40px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .footer .wordmark {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 12pt;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+  }
+  .footer .wordmark .advisory {
+    color: var(--amber-soft);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+  .footer p {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: white;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+  }
+  .footer .copy {
+    font-size: 8.5pt;
+    color: white;
+    opacity: 0.8;
+    margin-top: 20px;
+  }
+  .footer a {
+    color: var(--amber-soft);
+    border-bottom-color: var(--amber-soft);
+  }
+  .footer a:hover {
+    color: white;
+    border-color: white;
+  }
+
+  @media (max-width: 700px) {
+    .masthead { padding: 44px 24px 44px; }
+    .masthead h1 { font-size: 32pt; }
+    .masthead .subtitle { font-size: 14pt; }
+    .section h2 { font-size: 22pt; }
+    .results-hero { padding: 36px 28px; }
+    .results-hero .score-display { font-size: 56pt; }
+    .drag-number { font-size: 56pt; }
+    .dimension-title { font-size: 16pt; }
+    .rec-title { font-size: 15pt; }
+    .reframe-box .reframe-question { font-size: 14pt; }
+  }
+
+  /* ============ PRINT STYLES ============ */
+  @media print {
+    @page { size: A4; margin: 14mm; }
+
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    html, body {
+      background: white !important;
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    a { color: var(--amber) !important; border-bottom: none !important; }
+
+    .masthead {
+      padding: 24mm 0 18mm !important;
+      page-break-after: avoid;
+    }
+    .masthead .wordmark { margin-bottom: 14mm !important; }
+    .masthead h1 { font-size: 34pt !important; margin-bottom: 10mm !important; }
+    .masthead .subtitle { font-size: 13pt !important; }
+    .masthead .glow { display: none; }
+
+    .container { padding: 0 10mm !important; max-width: 100% !important; }
+
+    .section {
+      padding: 10mm 0 !important;
+      margin-bottom: 0 !important;
+      border: none !important;
+      page-break-inside: avoid;
+    }
+    .section h2 { font-size: 20pt !important; margin-bottom: 3mm !important; }
+    .section-deck { font-size: 11pt !important; margin-bottom: 6mm !important; }
+
+    .modes-banner {
+      grid-template-columns: repeat(4, 1fr) !important;
+      border: 1px solid var(--hairline-strong);
+      page-break-inside: avoid;
+    }
+    .mode-box { padding: 4mm !important; min-height: auto !important; }
+    .mode-box .mode-name { font-size: 11pt !important; }
+    .mode-box .mode-desc { font-size: 8pt !important; }
+
+    .progress { display: none !important; }
+
+    .dimension {
+      page-break-inside: avoid;
+      padding: 5mm 0 !important;
+    }
+    .dimension-title { font-size: 14pt !important; }
+    .dimension-question { margin-bottom: 4mm !important; font-size: 9pt !important; }
+
+    .options {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 3mm !important;
+    }
+    .option {
+      padding: 4mm 3mm !important;
+      page-break-inside: avoid;
+    }
+    .option.selected {
+      background: var(--cream) !important;
+      border-color: var(--amber) !important;
+      box-shadow: inset 3px 0 0 var(--amber) !important;
+    }
+    .option .opt-text { font-size: 8pt !important; }
+
+    .results-hero {
+      padding: 16mm 12mm !important;
+      page-break-inside: avoid;
+      page-break-after: avoid;
+    }
+    .results-hero .score-display { font-size: 56pt !important; }
+    .results-hero .maturity-stage { font-size: 16pt !important; }
+
+    .dim-result { page-break-inside: avoid; padding: 3mm 0 !important; }
+    .recommendation { page-break-inside: avoid; padding: 5mm 0 !important; }
+    .rec-title { font-size: 14pt !important; margin-bottom: 2mm !important; }
+    .rec-text { font-size: 9pt !important; }
+
+    .reframe-box { page-break-inside: avoid; padding: 6mm 8mm !important; }
+    .reframe-box .reframe-question { font-size: 13pt !important; }
+
+    .drag-section { page-break-inside: avoid; }
+    .drag-number { font-size: 56pt !important; }
+
+    .cta-section { display: none !important; }
+
+    .footer { padding: 14mm 10mm !important; page-break-inside: avoid; }
+    .footer h3 { font-size: 18pt !important; }
+    .footer .copy { font-size: 8pt !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="accent-strip"></div>
+  <div class="glow"></div>
+  <div class="masthead-inner">
+    <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
+    <div class="kicker">The Diagnostic</div>
+    <h1>The Human-Agent Operating Model Diagnostic</h1>
+    <p class="subtitle">Eight dimensions, four modes, one honest score. Where does your organisation actually sit on the spectrum from legacy hierarchy to agentic, and where should it be by the end of this year?</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ============ FRAMEWORK ============ -->
+  <section class="section">
+    <div class="section-kicker">The Framework</div>
+    <h2>Four modes of human-agent collaboration</h2>
+    <p class="section-deck">Every workflow in your organisation sits in one of four modes, whether you designed it that way or not. Mode 3 is where the step-change lives, Mode 4 is the frontier, and most organisations are stuck at Mode 2, the copilot ceiling. The diagnostic below scores where you actually are, dimension by dimension.</p>
+
+    <div class="modes-banner">
+      <div class="mode-box mode-1">
+        <div class="mode-num">Mode 01</div>
+        <div class="mode-name">Human Solo</div>
+        <div class="mode-desc">Humans do all the work, AI is absent or cosmetic. The org chart is the operating system.</div>
+      </div>
+      <div class="mode-box mode-2">
+        <div class="mode-num">Mode 02</div>
+        <div class="mode-name">Human-led, Agent-assisted</div>
+        <div class="mode-desc">Humans decide, AI suggests or drafts. Copilot territory, a 10 to 15 percent gain and then the ceiling.</div>
+      </div>
+      <div class="mode-box mode-3">
+        <div class="mode-num">Mode 03</div>
+        <div class="mode-name">Agent-led, Human-governed</div>
+        <div class="mode-desc">Agents execute end-to-end, humans set goals, handle exceptions, hold accountability. The step-change.</div>
+      </div>
+      <div class="mode-box mode-4">
+        <div class="mode-num">Mode 04</div>
+        <div class="mode-name">Fully Autonomous</div>
+        <div class="mode-desc">Agents operate within guardrails. Humans design the system, not the steps. Already shipping.</div>
+      </div>
+    </div>
+
+    <div class="spectrum">
+      <span class="label">Human control</span>
+      <div class="line"></div>
+      <span class="label">Agent autonomy</span>
+    </div>
+  </section>
+
+  <!-- ============ DIAGNOSTIC ============ -->
+  <section class="section" id="diagnostic">
+    <div class="section-kicker">The Diagnostic</div>
+    <h2>Score your organisation, eight dimensions</h2>
+    <p class="section-deck">Be ruthless, score where you are today, not where the strategy deck says you should be. The gap between your current mode and where you should be is where the value lives, and most organisations are surprised by the answer.</p>
+
+    <div class="progress">
+      <div class="progress-bar"><div class="progress-bar-fill" id="progressBar" style="width: 0%"></div></div>
+      <div class="progress-text" id="progressText">0 of 8 answered</div>
+    </div>
+
+    <!-- Dimension 1 -->
+    <div class="dimension" data-dim="workflow">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">01</span>Workflow Design</span>
+        <span class="dimension-badge" id="badge-workflow"></span>
+      </div>
+      <p class="dimension-question">How are your core business processes designed relative to AI?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'workflow')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Processes are unchanged, AI is not part of any core workflow.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'workflow')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">AI tools layered on top of existing processes, copilots and chatbots assist.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'workflow')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Some workflows redesigned end-to-end with AI agents executing core steps.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'workflow')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Core workflows designed AI-first, agents run autonomously, humans govern.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 2 -->
+    <div class="dimension" data-dim="decisions">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">02</span>Decision Rights</span>
+        <span class="dimension-badge" id="badge-decisions"></span>
+      </div>
+      <p class="dimension-question">Who makes decisions, and how fast do they move through the organisation?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'decisions')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Decisions flow up the hierarchy, multiple approvals required for action.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'decisions')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">AI provides recommendations, humans make all final decisions manually.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'decisions')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Agents make routine decisions autonomously, humans handle exceptions and strategy.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'decisions')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Decision rights mapped to agents and humans by type, real-time and embedded.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 3 -->
+    <div class="dimension" data-dim="teams">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">03</span>Team Structure</span>
+        <span class="dimension-badge" id="badge-teams"></span>
+      </div>
+      <p class="dimension-question">How are your teams composed and organised?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'teams')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Traditional functional teams, org chart defines who works with whom.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'teams')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">Teams use AI tools individually, no structural change to team composition.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'teams')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Some teams include AI agents as members, hybrid manager roles emerging.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'teams')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Human-agent teams are the standard unit, agent orchestrators lead blended teams.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 4 -->
+    <div class="dimension" data-dim="governance">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">04</span>Governance and Accountability</span>
+        <span class="dimension-badge" id="badge-governance"></span>
+      </div>
+      <p class="dimension-question">How do you govern AI activity and maintain accountability?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'governance')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">No AI governance framework, policies written for a pre-AI world.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'governance')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">Basic AI usage policies exist, periodic review, no real-time monitoring.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'governance')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Governance embedded in workflows, automated monitoring, clear human escalation paths.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'governance')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Real-time, data-driven governance, agents self-monitor within guardrails, continuous audit.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 5 -->
+    <div class="dimension" data-dim="data">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">05</span>Data Foundation</span>
+        <span class="dimension-badge" id="badge-data"></span>
+      </div>
+      <p class="dimension-question">Is your data infrastructure ready to fuel agentic operations?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'data')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Fragmented data across siloed systems, manual data handling is the norm.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'data')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">Some data integration, AI tools access limited datasets, quality inconsistent.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'data')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Harmonised data layer, agents access contextual data across systems, governance in place.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'data')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Unified, real-time data fabric, agents ingest, reason over, and act on cross-system data.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 6 -->
+    <div class="dimension" data-dim="talent">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">06</span>Talent and Roles</span>
+        <span class="dimension-badge" id="badge-talent"></span>
+      </div>
+      <p class="dimension-question">How are you developing people for a human-agent future?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'talent')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Traditional roles and job descriptions, no AI skills development strategy.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'talent')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">AI literacy programmes launched, roles unchanged, skills bolted on.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'talent')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">New roles created, orchestrators, hybrid managers, career paths being redesigned.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'talent')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Every role redefined for human-agent collaboration, continuous upskilling is operational.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 7 -->
+    <div class="dimension" data-dim="culture">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">07</span>Culture and Leadership</span>
+        <span class="dimension-badge" id="badge-culture"></span>
+      </div>
+      <p class="dimension-question">Does your leadership model enable or block the shift to agentic operations?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'culture')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Command-and-control leadership, AI seen as a threat or an IT project.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'culture')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">Leaders supportive but not active, AI delegated to technology teams.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'culture')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Leaders actively redesigning their domains with AI, experimentation encouraged.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'culture')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">System-thinking leaders, ethical AI judgement embedded, continuous adaptation.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 8 -->
+    <div class="dimension" data-dim="measurement">
+      <div class="dimension-header">
+        <span class="dimension-title"><span class="num">08</span>Measurement and Value</span>
+        <span class="dimension-badge" id="badge-measurement"></span>
+      </div>
+      <p class="dimension-question">How do you measure the impact of human-AI collaboration?</p>
+      <div class="options">
+        <div class="option" data-value="1" onclick="select(this, 'measurement')">
+          <div class="opt-mode">Mode 01</div>
+          <div class="opt-text">Traditional KPIs only, no measurement of AI contribution or coordination cost.</div>
+        </div>
+        <div class="option" data-value="2" onclick="select(this, 'measurement')">
+          <div class="opt-mode">Mode 02</div>
+          <div class="opt-text">AI usage tracked (adoption, queries), business impact not measured systematically.</div>
+        </div>
+        <div class="option" data-value="3" onclick="select(this, 'measurement')">
+          <div class="opt-mode">Mode 03</div>
+          <div class="opt-text">Outcome metrics in place, time reclaimed, decision speed, coordination cost reduced.</div>
+        </div>
+        <div class="option" data-value="4" onclick="select(this, 'measurement')">
+          <div class="opt-mode">Mode 04</div>
+          <div class="opt-text">Real-time value dashboards, human-agent performance measured as one system.</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- ============ RESULTS ============ -->
+<div class="results" id="results">
+
+  <div class="results-hero">
+    <div class="rh-inner">
+      <div class="score-label">Your Overall Operating Model Score</div>
+      <div class="score-display">
+        <span id="overallScore">--</span>
+        <span class="out-of">/ 4.0</span>
+      </div>
+      <div class="maturity-stage" id="maturityStage">--</div>
+      <div class="maturity-intro" id="maturityIntro"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-kicker">Dimension Scores</div>
+    <h2>Where the gaps are sitting</h2>
+    <p class="section-deck">The dimensions below show where your organisation is concentrated, and where the breakthrough redesign opportunities sit. The gaps between dimensions tell you where to focus first.</p>
+    <div id="dimensionResults"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-kicker">Priority Focus</div>
+    <h2>Where you should focus first</h2>
+    <p class="section-deck">Four recommendations, ordered from your lowest-scoring dimensions upward, each with a specific move to make in the next 90 days.</p>
+    <div id="recommendations"></div>
+
+    <div class="reframe-box">
+      <div class="reframe-label">The Reframing Question</div>
+      <div class="reframe-question" id="reframeQuestion"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-kicker">Organisational Drag</div>
+    <h2>The capacity you are paying for, and not using</h2>
+    <div class="drag-section">
+      <div class="drag-number" id="dragEstimate">--</div>
+      <div class="drag-copy">
+        <div class="drag-label">Estimated Drag</div>
+        <div class="drag-headline">The share of your capacity consumed by coordination.</div>
+        <div class="drag-text">Based on your scores, this is the estimate of capacity consumed by approvals, coordination, and structural overhead rather than value creation. Most organisations are surprised by how high this number is.</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a class="cta-btn amber" href="https://brief.craighortonadvisory.com">Subscribe to The Transformation Brief</a>
+      <button class="cta-btn secondary" onclick="window.print()">Export Results</button>
+      <button class="cta-btn secondary" onclick="resetDiagnostic()">Retake Diagnostic</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
+  <p>The Human-Agent Operating Model Diagnostic, from The Transformation Brief.</p>
+  <p>Built on research from McKinsey, Deloitte, Gartner, BCG, Hamel, and real-world deployment evidence.</p>
+  <p style="margin-top: 12px;"><a href="https://brief.craighortonadvisory.com">brief.craighortonadvisory.com</a></p>
+  <p class="copy">&copy; 2026 Craig Horton Advisory. All rights reserved.</p>
+</footer>
+
+<script>
+const scores = {};
+const dimensions = ['workflow', 'decisions', 'teams', 'governance', 'data', 'talent', 'culture', 'measurement'];
+const dimLabels = {
+  workflow: 'Workflow Design',
+  decisions: 'Decision Rights',
+  teams: 'Team Structure',
+  governance: 'Governance',
+  data: 'Data Foundation',
+  talent: 'Talent and Roles',
+  culture: 'Culture and Leadership',
+  measurement: 'Measurement and Value'
+};
+
+const stageCopy = {
+  'Legacy Hierarchy': 'Your organisation is running the 100-year-old operating system, with AI either absent or layered on as decoration. The redesign work has not yet started, and that is where your opportunity is.',
+  'Early Augmentation': 'AI is in the building, but the operating model is still pre-AI. You are seeing the copilot gains and about to hit the ceiling, where adding more AI produces diminishing returns without redesign.',
+  'Hybrid Transition': 'You are in the middle of the shift. Some workflows have crossed into Mode 3, others have not. The priority now is choosing which remaining workflows cross, and in what order.',
+  'Orchestrated Operations': 'Mode 3 is the norm across much of your organisation. The opportunity is to deepen governance, talent, and measurement so the gains compound, and to push selected workflows into Mode 4.',
+  'Agentic Enterprise': 'You are operating at the frontier. The work now is sustaining the culture, deepening governance as agents scale, and documenting the pattern so it holds through growth and leadership transitions.'
+};
+
+function select(el, dim) {
+  const parent = el.closest('.dimension');
+  parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  scores[dim] = parseInt(el.dataset.value);
+
+  const badge = document.getElementById('badge-' + dim);
+  badge.textContent = 'Mode 0' + scores[dim];
+  badge.classList.add('set');
+
+  updateProgress();
+}
+
+function updateProgress() {
+  const answered = Object.keys(scores).length;
+  const pct = (answered / 8) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = answered + ' of 8 answered';
+
+  if (answered === 8) {
+    setTimeout(showResults, 400);
+  }
+}
+
+function showResults() {
+  const avg = dimensions.reduce((sum, d) => sum + (scores[d] || 0), 0) / 8;
+  const rounded = avg.toFixed(1);
+
+  document.getElementById('overallScore').textContent = rounded;
+
+  let stage = '';
+  if (avg <= 1.3) stage = 'Legacy Hierarchy';
+  else if (avg <= 2.0) stage = 'Early Augmentation';
+  else if (avg <= 2.7) stage = 'Hybrid Transition';
+  else if (avg <= 3.4) stage = 'Orchestrated Operations';
+  else stage = 'Agentic Enterprise';
+  document.getElementById('maturityStage').textContent = stage;
+  document.getElementById('maturityIntro').textContent = stageCopy[stage];
+
+  // Dimension bars
+  const resultsDiv = document.getElementById('dimensionResults');
+  resultsDiv.innerHTML = '';
+  dimensions.forEach(d => {
+    const v = scores[d];
+    const pct = (v / 4) * 100;
+    const color = v >= 3 ? '#c97a2b' : '#1a2a47';
+    resultsDiv.innerHTML += `
+      <div class="dim-result">
+        <div class="dim-result-label">${dimLabels[d]}</div>
+        <div class="dim-result-bar-bg"><div class="dim-result-bar" style="width:${pct}%; background:${color}"></div></div>
+        <div class="dim-result-mode" style="color:${color}">Mode 0${v}</div>
+      </div>`;
+  });
+
+  // Recommendations
+  const sorted = [...dimensions].sort((a, b) => scores[a] - scores[b]);
+  const recDiv = document.getElementById('recommendations');
+  recDiv.innerHTML = '';
+  const recs = {
+    workflow: {
+      1: { p: 'high', t: 'Redesign workflows before adding tools', d: 'You are running a pre-AI operating model. Layering copilots onto legacy processes will give you 10 percent improvement at best. The value is in end-to-end redesign. Pick your highest-volume workflow and redesign it AI-first.' },
+      2: { p: 'high', t: 'Move beyond the copilot ceiling', d: 'You have AI assisting, but your workflows were designed for a world without agents. You are hitting the copilot ceiling, where AI can suggest but cannot act. Identify three workflows where agents should execute, not just advise.' },
+      3: { p: 'medium', t: 'Scale what is working', d: 'You have proven the model in select workflows. Now systematise it. Build the playbook for redesigning remaining processes and train teams on the agent-led pattern.' },
+      4: { p: 'low', t: 'Maintain and optimise', d: 'Your workflow design is advanced. Focus on continuous optimisation and ensure governance keeps pace with agent autonomy.' }
+    },
+    decisions: {
+      1: { p: 'high', t: 'Decision bottlenecks are killing your speed', d: 'Every decision that flows up a hierarchy and back down is time and talent wasted. Map your decision paths. Identify which decisions are routine enough for agents to handle, and give them the authority.' },
+      2: { p: 'medium', t: 'From recommendations to autonomous decisions', d: 'AI is advising but humans are still the bottleneck for every action. Define a clear taxonomy, which decisions are agent-safe, which need human approval, which need human judgement.' },
+      3: { p: 'low', t: 'Refine the boundary', d: 'Good progress. Now focus on edge cases and the escalation paths. The quality of your exception-handling is what separates good from great.' },
+      4: { p: 'low', t: 'Leading practice', d: 'Your decision architecture is mature. Share this pattern across the organisation.' }
+    },
+    teams: {
+      1: { p: 'high', t: 'Your org chart is your biggest constraint', d: 'Traditional functional teams cannot operate at the speed the market demands. Start with one team. Add an AI agent as a team member. Redefine the team charter around outcomes, not tasks.' },
+      2: { p: 'medium', t: 'Individual tools, collective stagnation', d: 'People are using AI individually, but the team structure has not changed. The value is in hybrid teams. Create the first agent orchestrator role and watch what happens.' },
+      3: { p: 'medium', t: 'Scale the hybrid model', d: 'You have proof points. Now define the standard for how hybrid teams operate, how agents join, and how hybrid managers lead.' },
+      4: { p: 'low', t: 'Evolve continuously', d: 'Human-agent teams are your operating standard. Focus on measurement and continuous learning.' }
+    },
+    governance: {
+      1: { p: 'high', t: 'You are flying blind', d: 'No AI governance means no scalability, no trust, and significant risk. This is the blocker for everything else. Build the framework before scaling any agent capability.' },
+      2: { p: 'medium', t: 'From paper to embedded', d: 'Policies on paper do not govern agents that operate continuously. Move governance into the workflow itself, automated monitoring, real-time alerts, clear escalation.' },
+      3: { p: 'low', t: 'Strengthen continuous audit', d: 'Embedded governance is in place. Now ensure it is truly continuous and that audit trails are complete.' },
+      4: { p: 'low', t: 'Leading practice', d: 'Your governance model is a competitive advantage. Document it. Clients and regulators will ask how you did it.' }
+    },
+    data: {
+      1: { p: 'high', t: 'Fix the foundation first', d: 'Fragmented data is the number one barrier to agentic operations. No amount of AI capability compensates for data that agents cannot access or trust. This must be addressed before scaling.' },
+      2: { p: 'medium', t: 'From islands to integration', d: 'Partial data access produces partial insights. Prioritise harmonising the data layer across your highest-value workflows.' },
+      3: { p: 'low', t: 'Complete the fabric', d: 'Your data foundation is strong. Focus on real-time access and cross-system reasoning capability.' },
+      4: { p: 'low', t: 'Optimise and protect', d: 'Mature data infrastructure. Focus on data quality governance and privacy as agent access expands.' }
+    },
+    talent: {
+      1: { p: 'high', t: 'Your people are unprepared', d: 'Without a talent strategy for human-agent collaboration, your best people will leave and your remaining people will resist. Start with the new roles, orchestrators, hybrid managers, AI coaches.' },
+      2: { p: 'medium', t: 'From literacy to redesign', d: 'AI training is helpful but insufficient. Roles need to be fundamentally redesigned, not just upskilled. Define what an orchestrator looks like in your context.' },
+      3: { p: 'low', t: 'Build career paths', d: 'New roles exist. Now build the career progression and incentive structures that make them attractive.' },
+      4: { p: 'low', t: 'Continuous evolution', d: 'Your talent model is advanced. Focus on retention and ensuring that upskilling keeps pace with capability.' }
+    },
+    culture: {
+      1: { p: 'high', t: 'Leadership is the bottleneck, not the technology', d: 'Command-and-control leadership is incompatible with agentic operations. Leaders who see AI as a threat or delegate it to IT will be the reason transformation fails. This is a leadership development priority.' },
+      2: { p: 'medium', t: 'From supportive to active', d: 'Passive support is not leadership. Leaders must actively redesign their own domains, not delegate the work to technology teams. Make AI redesign a leadership KPI.' },
+      3: { p: 'low', t: 'Embed system thinking', d: 'Active leaders are your advantage. Now develop system-thinking capability so they can see cross-domain opportunities.' },
+      4: { p: 'low', t: 'Sustain the culture', d: 'Exceptional. Focus on sustaining this culture through growth and leadership transitions.' }
+    },
+    measurement: {
+      1: { p: 'high', t: 'You cannot improve what you do not measure', d: 'Without measuring coordination cost, agent contribution, and human-agent outcomes, you are guessing. Start with three metrics, time reclaimed, decision cycle time, and coordination overhead.' },
+      2: { p: 'medium', t: 'From adoption to impact', d: 'Tracking usage is vanity metrics. Track outcomes, what value did the agents create, what human capacity was freed, what decisions improved.' },
+      3: { p: 'low', t: 'Build real-time dashboards', d: 'Outcome measurement is in place. Now make it real-time and visible to leadership.' },
+      4: { p: 'low', t: 'Integrated performance', d: 'Your measurement model is a differentiator. Use it to drive continuous optimisation.' }
+    }
+  };
+
+  sorted.forEach((d, i) => {
+    if (i >= 4) return;
+    const r = recs[d][scores[d]];
+    const prioLabel = r.p === 'high' ? 'High priority' : r.p === 'medium' ? 'Medium priority' : 'Low priority';
+    recDiv.innerHTML += `
+      <div class="recommendation">
+        <div class="rec-priority ${r.p}">${prioLabel}</div>
+        <div class="rec-title">${r.t}</div>
+        <div class="rec-text">${r.d}</div>
+      </div>`;
+  });
+
+  // Reframe question based on lowest score
+  const lowest = sorted[0];
+  const reframes = {
+    workflow: 'If an agent could execute your highest-volume process end-to-end tomorrow, what would your team spend their time on instead?',
+    decisions: 'How many decisions in your organisation this week required human approval but not human judgement?',
+    teams: 'If you could add three AI agents to any team in your organisation right now, which team would benefit most, and what does that tell you about your structure?',
+    governance: 'When your AI agents make a mistake at 2am on a Sunday, who knows, who acts, and how fast?',
+    data: 'What percentage of the data your people need to make good decisions is actually accessible to them in the moment they need it?',
+    talent: 'If you redesigned every role in your organisation around what only humans can do, how many of your current job descriptions would survive unchanged?',
+    culture: 'Is your leadership team designing the future of your organisation, or defending the present?',
+    measurement: 'What is the actual cost, in hours and talent, of coordination in your organisation this month, and does anyone know?'
+  };
+  document.getElementById('reframeQuestion').textContent = reframes[lowest];
+
+  const dragPct = Math.round((1 - ((avg - 1) / 3)) * 45 + 10);
+  document.getElementById('dragEstimate').textContent = dragPct + '%';
+
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetDiagnostic() {
+  Object.keys(scores).forEach(k => delete scores[k]);
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  dimensions.forEach(d => {
+    const badge = document.getElementById('badge-' + d);
+    badge.textContent = '';
+    badge.classList.remove('set');
+  });
+  document.getElementById('progressBar').style.width = '0%';
+  document.getElementById('progressText').textContent = '0 of 8 answered';
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
