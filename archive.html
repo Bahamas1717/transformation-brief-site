@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Archive | The Transformation Brief | Craig Horton Advisory</title>
-<meta name="description" content="Every edition of The Transformation Brief. Weekly intelligence for senior leaders navigating AI transformation.">
+<meta name="description" content="The Transformation Brief, weekly intelligence for senior leaders navigating AI transformation.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Transformation Brief, Archive">
-<meta property="og:description" content="Every edition of The Transformation Brief, weekly intelligence for leaders navigating AI transformation.">
+<meta property="og:description" content="The Transformation Brief archive, weekly intelligence for leaders navigating AI transformation.">
 <meta property="og:url" content="https://brief.craighortonadvisory.com/archive.html">
 <link rel="canonical" href="https://brief.craighortonadvisory.com/archive.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -219,6 +219,84 @@
     color: var(--navy);
     line-height: 1.7;
   }
+
+  .thinker {
+    padding: 56px 0 44px;
+  }
+  .thinker-head {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 48pt;
+    line-height: 1.02;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 700px) { .thinker-head { font-size: 34pt; } }
+  .thinker-head .and-builder {
+    color: var(--amber);
+    display: block;
+  }
+  .thinker-body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: var(--navy);
+    margin-bottom: 18px;
+    max-width: 640px;
+  }
+  .thinker-list {
+    list-style: none;
+    margin: 24px 0 32px;
+    padding: 0;
+    max-width: 640px;
+  }
+  .thinker-list li {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--navy);
+    padding: 6px 0 6px 18px;
+    position: relative;
+  }
+  .thinker-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+  }
+  .thinker-list li strong { font-weight: 600; color: var(--navy); }
+  .thinker-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    max-width: 640px;
+  }
+  @media (max-width: 700px) {
+    .thinker-stats { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .thinker-stats .stat-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 28pt;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .thinker-stats .stat-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: var(--navy);
+    letter-spacing: 0.12em;
+    margin-top: 8px;
+  }
 </style>
 </head>
 <body>
@@ -230,7 +308,7 @@
     <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
     <div class="kicker">The Transformation Brief</div>
     <h1>Archive</h1>
-    <p class="subtitle">Every edition of The Transformation Brief. Weekly intelligence for senior leaders navigating AI transformation, through the lens of management, governance, and behaviour.</p>
+    <p class="subtitle">The Transformation Brief, weekly intelligence for senior leaders navigating AI transformation, through the lens of management, governance, and behaviour. Issues archived as they publish.</p>
   </div>
 </header>
 
@@ -257,6 +335,24 @@
     <h3>A weekly signal, for leaders who need signal, not volume.</h3>
     <p>Friday mornings, in your inbox. One Lead Signal, five Radar picks, one counter-voice, one reframing question, one governance reminder. Over 400 subscribers in the first two weeks.</p>
     <a class="btn" href="https://brief.craighortonadvisory.com">Subscribe to The Transformation Brief</a>
+  </div>
+</section>
+
+<section class="thinker">
+  <div class="container">
+    <h2 class="thinker-head">Thinker <span class="and-builder">and builder</span></h2>
+    <p class="thinker-body">Craig Horton is an Amsterdam-based global client leader with 20 years of experience building enterprise relationships and leading transformation programmes across some of the world's most complex organisations. His track record is anchored to measurable financial outcomes, from EUR 300M EBITDA uplifts and 60 percent revenue growth to turning distressed accounts into reference engagements within two quarters.</p>
+    <p class="thinker-body">Whether advising boards on AI transformation strategy or stepping into executive roles where others stall at the boardroom door, Craig brings the rare combination of supplier-side intelligence, enterprise change experience, and a proprietary diagnostic methodology built for leaders who need results, not another framework conversation.</p>
+    <ul class="thinker-list">
+      <li><strong>AI Readiness Blueprint,</strong> a six-driver diagnostic framework for enterprise AI transformation, grounded in EY, Oxford, McKinsey, and Gartner research.</li>
+      <li><strong>Business Value Framework,</strong> initiative scoring across strategic alignment, financial return, change enablement, and governance risk.</li>
+      <li><strong>Global experience,</strong> Salesforce, Atos, Microsoft, Accenture, and HPE, across enterprise transformation programmes in healthcare, procurement, and professional services.</li>
+    </ul>
+    <div class="thinker-stats">
+      <div class="stat"><div class="stat-num">EUR 300M</div><div class="stat-label">EBITDA uplift</div></div>
+      <div class="stat"><div class="stat-num">60%</div><div class="stat-label">Revenue growth</div></div>
+      <div class="stat"><div class="stat-num">USD 100M+</div><div class="stat-label">Account revitalisation</div></div>
+    </div>
   </div>
 </section>
 
