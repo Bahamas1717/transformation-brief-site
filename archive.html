@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive | The Transformation Brief | Craig Horton Advisory</title>
+<meta name="description" content="Every edition of The Transformation Brief. Weekly intelligence for senior leaders navigating AI transformation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Transformation Brief, Archive">
+<meta property="og:description" content="Every edition of The Transformation Brief, weekly intelligence for leaders navigating AI transformation.">
+<meta property="og:url" content="https://brief.craighortonadvisory.com/archive.html">
+<link rel="canonical" href="https://brief.craighortonadvisory.com/archive.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2a47;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --hairline: rgba(26, 42, 71, 0.18);
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 700px) { .container { padding: 0 20px; } }
+
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 64px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead .accent-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%);
+  }
+  .masthead .glow {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(226, 163, 88, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner { position: relative; z-index: 2; }
+  .masthead .wordmark {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    color: white;
+    margin-bottom: 36px;
+  }
+  .masthead .wordmark .advisory {
+    color: var(--amber-soft);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+  .masthead .kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.32em;
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 56pt;
+    line-height: 0.98;
+    color: white;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 700px) { .masthead h1 { font-size: 36pt; } }
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 1.4;
+    color: white;
+    max-width: 660px;
+  }
+
+  .editions {
+    padding: 64px 0 40px;
+  }
+
+  .edition {
+    display: grid;
+    grid-template-columns: 120px 1fr 160px;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--hairline);
+    align-items: start;
+  }
+  .edition:last-of-type { border-bottom: 1px solid var(--hairline); }
+  @media (max-width: 700px) {
+    .edition { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  .edition .issue {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber);
+    letter-spacing: 0.28em;
+  }
+  .edition .issue .date {
+    display: block;
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 9.5pt;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .edition .body h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 22pt;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.014em;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 700px) { .edition .body h2 { font-size: 18pt; } }
+  .edition .body .summary {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.58;
+    color: var(--navy);
+    max-width: 520px;
+  }
+  .edition .links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    text-align: right;
+  }
+  @media (max-width: 700px) { .edition .links { align-items: flex-start; text-align: left; } }
+  .edition .links a {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    color: var(--amber);
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 1px;
+  }
+  .edition .links a:hover { color: var(--navy); border-color: var(--navy); }
+
+  .subscribe {
+    background: var(--navy);
+    color: white;
+    padding: 56px 0 44px;
+    margin-top: 48px;
+  }
+  .subscribe .kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.28em;
+    margin-bottom: 16px;
+  }
+  .subscribe h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 28pt;
+    line-height: 1.15;
+    color: white;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+  @media (max-width: 700px) { .subscribe h3 { font-size: 22pt; } }
+  .subscribe p {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: white;
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .subscribe .btn {
+    display: inline-block;
+    background: var(--amber);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    border: none;
+    text-decoration: none;
+  }
+  .subscribe .btn:hover { background: var(--amber-soft); border: none; color: white; }
+
+  .footer {
+    padding: 32px 0 40px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="accent-strip"></div>
+  <div class="glow"></div>
+  <div class="container masthead-inner">
+    <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
+    <div class="kicker">The Transformation Brief</div>
+    <h1>Archive</h1>
+    <p class="subtitle">Every edition of The Transformation Brief. Weekly intelligence for senior leaders navigating AI transformation, through the lens of management, governance, and behaviour.</p>
+  </div>
+</header>
+
+<section class="editions">
+  <div class="container">
+
+    <div class="edition">
+      <div class="issue">Issue 04<span class="date">24 April 2026</span></div>
+      <div class="body">
+        <h2>Manual oversight has reached its breaking point</h2>
+        <div class="summary">85 percent of enterprises are customising agents in production, 21 percent have a mature governance model. The EU AI Act high-risk regime activates in 102 days. Plus the aibvf-mcp v0.2.0 launch, EY's 130,000 agentic auditors, BCG's 1,7 percent revenue investment signal, and the reframing question that changes Monday.</div>
+      </div>
+      <div class="links">
+        <a href="issue-04.pdf" download>Download PDF</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="subscribe">
+  <div class="container">
+    <div class="kicker">Stay in the loop</div>
+    <h3>A weekly signal, for leaders who need signal, not volume.</h3>
+    <p>Friday mornings, in your inbox. One Lead Signal, five Radar picks, one counter-voice, one reframing question, one governance reminder. Over 400 subscribers in the first two weeks.</p>
+    <a class="btn" href="https://brief.craighortonadvisory.com">Subscribe to The Transformation Brief</a>
+  </div>
+</section>
+
+<footer class="container footer">
+  Craig Horton <strong style="color: var(--amber);">Advisory</strong> &nbsp;·&nbsp; AI Transformation, Enterprise Strategy, Change Management
+  <br/>
+  <a href="https://linkedin.com/in/craig-horton-ai">linkedin.com/in/craig-horton-ai</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a>
+  <br/>
+  &copy; 2026 Craig Horton Advisory
+</footer>
+
+</body>
+</html>
