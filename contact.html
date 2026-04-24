@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get in Touch | Craig Horton Advisory</title>
+<meta name="description" content="Book a call with Craig Horton. Thirty minutes on the calendar, you bring the problem, I bring the frameworks and an honest read.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Get in Touch, Craig Horton Advisory">
+<meta property="og:description" content="Book thirty minutes on the calendar with Craig Horton, AI Transformation Advisor.">
+<meta property="og:url" content="https://craighortonadvisory.com/contact.html">
+<link rel="canonical" href="https://craighortonadvisory.com/contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1a2a47;
+    --navy-deep: #121f36;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --hairline: rgba(26, 42, 71, 0.18);
+  }
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 700px) { .container { padding: 0 20px; } }
+
+  /* Nav */
+  .site-nav { background: var(--navy); position: relative; z-index: 5; }
+  .site-nav .accent-strip { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%); }
+  .site-nav .nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  .nav-brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13pt; color: white; border: none; }
+  .nav-brand .advisory { color: var(--amber-soft); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
+  .nav-brand:hover { color: white; border: none; }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.5pt; color: white; border: none; letter-spacing: 0.02em; padding: 4px 0; border-bottom: 2px solid transparent; }
+  .nav-links a:hover { color: white; border-bottom-color: var(--amber); }
+  .nav-links a.cta { background: var(--amber); padding: 8px 18px; font-weight: 600; letter-spacing: 0.06em; border: none; }
+  @media (max-width: 900px) { .nav-links { gap: 18px; } .nav-links a:not(.cta) { display: none; } }
+
+  /* Hero */
+  .hero { background: var(--navy); color: white; padding: 72px 0 80px; position: relative; overflow: hidden; }
+  .hero .glow { position: absolute; right: -240px; top: -240px; width: 820px; height: 820px; background: radial-gradient(circle, rgba(226, 163, 88, 0.28) 0%, transparent 65%); }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero .kicker { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10.5pt; color: var(--amber-soft); letter-spacing: 0.32em; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 64pt; line-height: 0.98; color: white; letter-spacing: -0.028em; margin-bottom: 24px; max-width: 860px; }
+  @media (max-width: 700px) { .hero h1 { font-size: 36pt; } }
+  .hero h1 .amber { color: var(--amber); }
+  .hero .lede { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 17pt; line-height: 1.44; color: white; max-width: 760px; }
+
+  /* Layout */
+  .content { padding: 64px 0 80px; background: var(--cream); }
+  .grid { display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: start; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+  /* Left panel */
+  .panel h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 28pt; line-height: 1.12; color: var(--navy); letter-spacing: -0.018em; margin-bottom: 20px; }
+  .panel p { font-family: 'Inter', sans-serif; font-size: 11.5pt; line-height: 1.7; color: var(--navy); margin-bottom: 18px; }
+  .panel .detail-block { background: white; border-left: 3px solid var(--amber); padding: 20px 22px; margin-top: 22px; }
+  .panel .detail-block .label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber); letter-spacing: 0.26em; margin-bottom: 10px; }
+  .panel .detail-block a { font-family: 'Inter', sans-serif; font-size: 11pt; color: var(--navy); border-bottom: 1px solid var(--amber); display: block; padding: 4px 0; }
+  .panel .detail-block a:hover { color: var(--amber); }
+
+  /* Calendly inline */
+  .calendly-inline-widget { min-width: 320px; width: 100%; height: 720px; }
+
+  /* Footer */
+  .footer { background: var(--navy-deep); color: white; padding: 44px 0; font-family: 'Inter', sans-serif; font-size: 9.5pt; line-height: 1.7; }
+  .footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; align-items: center; }
+  .footer a { color: var(--amber-soft); border-bottom-color: var(--amber-soft); }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<div class="site-nav">
+  <div class="accent-strip"></div>
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="nav-brand">Craig Horton <span class="advisory">Advisory</span></a>
+      <div class="nav-links">
+        <a href="./archive.html">The Brief</a>
+        <a href="./end-of-the-org-chart.html">Papers</a>
+        <a href="./diagnostic.html">Diagnostic</a>
+        <a href="https://bvf.craighortonadvisory.com">AI BVF</a>
+        <a href="./about.html">About</a>
+        <a href="./contact.html" class="cta">Get in Touch</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="glow"></div>
+  <div class="container hero-inner">
+    <div class="kicker">Get in Touch</div>
+    <h1>A conversation <span class="amber">on the calendar</span>, not another follow-up thread.</h1>
+    <p class="lede">Thirty minutes on the calendar, you bring the problem, I bring the frameworks and an honest read. No pitch, no deck. Pick a slot, see you there.</p>
+  </div>
+</section>
+
+<!-- Content -->
+<section class="content">
+  <div class="container">
+    <div class="grid">
+      <div class="panel">
+        <h2>Book thirty minutes.</h2>
+        <p>The calendar on the right is live. Pick a time that works for you and the invite lands in both our inboxes. For anything that does not fit a calendar slot, the details below reach me directly.</p>
+
+        <div class="detail-block">
+          <div class="label">Other Ways In</div>
+          <a href="mailto:craigmds1@gmail.com">craigmds1@gmail.com</a>
+          <a href="https://linkedin.com/in/craig-horton-ai">linkedin.com/in/craig-horton-ai</a>
+          <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a>
+        </div>
+
+        <p style="margin-top: 24px; font-size: 10.5pt; opacity: 0.8;">Amsterdam. Responses within one working day.</p>
+      </div>
+
+      <div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div>Craig Horton <strong style="color: var(--amber-soft); font-family: 'Cormorant Garamond', serif; font-weight: 500;">Advisory</strong> &nbsp;·&nbsp; AI Transformation, Enterprise Strategy, Change Management</div>
+    <div>
+      <a href="./index.html">Home</a> &nbsp;·&nbsp;
+      <a href="./about.html">About</a> &nbsp;·&nbsp;
+      <a href="./archive.html">The Brief</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+</body>
+</html>

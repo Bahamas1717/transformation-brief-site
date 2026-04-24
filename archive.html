@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archive | The Transformation Brief | Craig Horton Advisory</title>
+<meta name="description" content="The Transformation Brief, weekly intelligence for senior leaders navigating AI transformation.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Transformation Brief, Archive">
+<meta property="og:description" content="The Transformation Brief archive, weekly intelligence for leaders navigating AI transformation.">
+<meta property="og:url" content="https://craighortonadvisory.com/archive.html">
+<link rel="canonical" href="https://craighortonadvisory.com/archive.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1a2a47;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --hairline: rgba(26, 42, 71, 0.18);
+  }
+
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 700px) { .container { padding: 0 20px; } }
+
+  /* Shared Nav */
+  .nav-wrap { background: var(--navy); position: relative; z-index: 5; }
+  .nav-wrap .accent-strip { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%); }
+  .nav-wrap .container { max-width: 1120px; }
+  .nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  .nav-brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13pt; color: white; border: none; }
+  .nav-brand .advisory { color: var(--amber-soft); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
+  .nav-brand:hover { color: white; border: none; }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.5pt; color: white; border: none; letter-spacing: 0.02em; padding: 4px 0; border-bottom: 2px solid transparent; }
+  .nav-links a:hover { color: white; border-bottom-color: var(--amber); }
+  .nav-links a.cta { background: var(--amber); padding: 8px 18px; font-weight: 600; letter-spacing: 0.06em; border: none; }
+  .nav-links a.cta:hover { background: var(--amber-soft); color: white; border: none; }
+  @media (max-width: 900px) { .nav-links { gap: 18px; } .nav-links a:not(.cta) { display: none; } }
+
+  .masthead {
+    background: var(--navy);
+    color: white;
+    padding: 64px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead .accent-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%);
+  }
+  .masthead .glow {
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(226, 163, 88, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .masthead-inner { position: relative; z-index: 2; }
+  .masthead .wordmark {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 14pt;
+    color: white;
+    margin-bottom: 36px;
+  }
+  .masthead .wordmark .advisory {
+    color: var(--amber-soft);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+  .masthead .kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.32em;
+    margin-bottom: 20px;
+  }
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 56pt;
+    line-height: 0.98;
+    color: white;
+    letter-spacing: -0.025em;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 700px) { .masthead h1 { font-size: 36pt; } }
+  .masthead .subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 1.4;
+    color: white;
+    max-width: 660px;
+  }
+
+  .editions {
+    padding: 64px 0 40px;
+  }
+
+  .edition {
+    display: grid;
+    grid-template-columns: 120px 1fr 160px;
+    gap: 32px;
+    padding: 28px 0;
+    border-top: 1px solid var(--hairline);
+    align-items: start;
+  }
+  .edition:last-of-type { border-bottom: 1px solid var(--hairline); }
+  @media (max-width: 700px) {
+    .edition { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  .edition .issue {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber);
+    letter-spacing: 0.28em;
+  }
+  .edition .issue .date {
+    display: block;
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 9.5pt;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+  .edition .body h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 22pt;
+    line-height: 1.15;
+    color: var(--navy);
+    letter-spacing: -0.014em;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 700px) { .edition .body h2 { font-size: 18pt; } }
+  .edition .body .summary {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.58;
+    color: var(--navy);
+    max-width: 520px;
+  }
+  .edition .links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    text-align: right;
+  }
+  @media (max-width: 700px) { .edition .links { align-items: flex-start; text-align: left; } }
+  .edition .links a {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 10pt;
+    color: var(--amber);
+    border-bottom: 1px solid var(--amber);
+    padding-bottom: 1px;
+  }
+  .edition .links a:hover { color: var(--navy); border-color: var(--navy); }
+
+  .subscribe {
+    background: var(--navy);
+    color: white;
+    padding: 56px 0 44px;
+    margin-top: 48px;
+  }
+  .subscribe .kicker {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    letter-spacing: 0.28em;
+    margin-bottom: 16px;
+  }
+  .subscribe h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    font-size: 28pt;
+    line-height: 1.15;
+    color: white;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+  @media (max-width: 700px) { .subscribe h3 { font-size: 22pt; } }
+  .subscribe p {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: white;
+    margin-bottom: 24px;
+    max-width: 640px;
+  }
+  .subscribe .btn {
+    display: inline-block;
+    background: var(--amber);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    border: none;
+    text-decoration: none;
+  }
+  .subscribe .btn:hover { background: var(--amber-soft); border: none; color: white; }
+
+  .footer {
+    padding: 32px 0 40px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  .thinker {
+    padding: 56px 0 44px;
+  }
+  .thinker-head {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 48pt;
+    line-height: 1.02;
+    color: var(--navy);
+    letter-spacing: -0.025em;
+    margin-bottom: 28px;
+  }
+  @media (max-width: 700px) { .thinker-head { font-size: 34pt; } }
+  .thinker-head .and-builder {
+    color: var(--amber);
+    display: block;
+  }
+  .thinker-body {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: var(--navy);
+    margin-bottom: 18px;
+    max-width: 640px;
+  }
+  .thinker-list {
+    list-style: none;
+    margin: 24px 0 32px;
+    padding: 0;
+    max-width: 640px;
+  }
+  .thinker-list li {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--navy);
+    padding: 6px 0 6px 18px;
+    position: relative;
+  }
+  .thinker-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+  }
+  .thinker-list li strong { font-weight: 600; color: var(--navy); }
+  .thinker-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hairline);
+    max-width: 640px;
+  }
+  @media (max-width: 700px) {
+    .thinker-stats { grid-template-columns: 1fr; gap: 20px; }
+  }
+  .thinker-stats .stat-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    font-size: 28pt;
+    color: var(--amber);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .thinker-stats .stat-label {
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 9pt;
+    color: var(--navy);
+    letter-spacing: 0.12em;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Shared Nav -->
+<div class="nav-wrap">
+  <div class="accent-strip"></div>
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="nav-brand">Craig Horton <span class="advisory">Advisory</span></a>
+      <div class="nav-links">
+        <a href="./archive.html">The Brief</a>
+        <a href="./end-of-the-org-chart.html">Papers</a>
+        <a href="./diagnostic.html">Diagnostic</a>
+        <a href="https://bvf.craighortonadvisory.com">AI BVF</a>
+        <a href="./about.html">About</a>
+        <a href="" class="cta" onclick="Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});return false;">Get in Touch</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="accent-strip"></div>
+  <div class="glow"></div>
+  <div class="container masthead-inner">
+    <div class="wordmark">Craig Horton <span class="advisory">Advisory</span></div>
+    <div class="kicker">The Transformation Brief</div>
+    <h1>Archive</h1>
+    <p class="subtitle">The Transformation Brief, weekly intelligence for senior leaders navigating AI transformation, through the lens of management, governance, and behaviour. Issues archived as they publish.</p>
+  </div>
+</header>
+
+<section class="editions">
+  <div class="container">
+
+    <div class="edition">
+      <div class="issue">Issue 04<span class="date">24 April 2026</span></div>
+      <div class="body">
+        <h2>Manual oversight has reached its breaking point</h2>
+        <div class="summary">85 percent of enterprises are customising agents in production, 21 percent have a mature governance model. The EU AI Act high-risk regime activates in 102 days. Plus the aibvf-mcp v0.2.0 launch, EY's 130,000 agentic auditors, BCG's 1,7 percent revenue investment signal, and the reframing question that changes Monday.</div>
+      </div>
+      <div class="links">
+        <a href="issue-04.pdf" download>Download PDF</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="subscribe">
+  <div class="container">
+    <div class="kicker">Stay in the loop</div>
+    <h3>A weekly signal, for leaders who need signal, not volume.</h3>
+    <p>Friday mornings, in your inbox. One Lead Signal, five Radar picks, one counter-voice, one reframing question, one governance reminder. Over 400 subscribers in the first two weeks.</p>
+    <a class="btn" href="https://brief.craighortonadvisory.com">Subscribe to The Transformation Brief</a>
+  </div>
+</section>
+
+<section class="thinker">
+  <div class="container">
+    <h2 class="thinker-head">Thinker <span class="and-builder">and builder</span></h2>
+    <p class="thinker-body">Craig Horton is an Amsterdam-based AI Transformation Advisor with 20 years of enterprise leadership at HPE, Atos, Microsoft, Accenture, and Salesforce. His track record is anchored to measurable financial outcomes, EUR 300M EBITDA uplifts, 60 percent revenue growth, and distressed accounts turned into reference engagements within two quarters.</p>
+    <p class="thinker-body">Whether advising on AI transformation strategy or stepping into executive roles where others stall, Craig brings the rare combination of supplier-side intelligence, enterprise change experience, and proprietary diagnostic frameworks built for leaders who need results, not another framework conversation. He builds the frameworks and the code behind them.</p>
+    <ul class="thinker-list">
+      <li><strong>aibvf-mcp,</strong> open-source Model Context Protocol server for pre-launch scoring of AI initiatives, live in the MCP registry at v0.2.0 (April 2026). <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a></li>
+      <li><strong>Human-Agent Operating Model,</strong> four-mode framework with eight-dimension diagnostic, published in "The End of the Org Chart" (April 2026).</li>
+      <li><strong>AI Business Value Framework (AI BVF),</strong> proprietary decision framework, fifth generation, <a href="https://bvf.craighortonadvisory.com">bvf.craighortonadvisory.com</a>, access code <strong>bvf2026</strong>.</li>
+      <li><strong>The Transformation Brief,</strong> weekly intelligence for senior leaders navigating AI transformation.</li>
+      <li><strong>Global experience,</strong> Salesforce, Atos, Microsoft, Accenture, and HPE, across enterprise transformation programmes in healthcare, procurement, and professional services.</li>
+    </ul>
+    <p class="thinker-body" style="font-size: 10pt; margin-top: 20px;">Executive Leadership distinction, Sa&iuml;d Business School, University of Oxford. Global Executive MBA with Artificial Intelligence, University of Hertfordshire, starting May 2026.</p>
+    <div class="thinker-stats">
+      <div class="stat"><div class="stat-num">EUR 300M</div><div class="stat-label">EBITDA uplift</div></div>
+      <div class="stat"><div class="stat-num">60%</div><div class="stat-label">Revenue growth</div></div>
+      <div class="stat"><div class="stat-num">USD 100M+</div><div class="stat-label">Account revitalisation</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="container footer">
+  Craig Horton <strong style="color: var(--amber);">Advisory</strong> &nbsp;·&nbsp; AI Transformation, Enterprise Strategy, Change Management
+  <br/>
+  <a href="https://linkedin.com/in/craig-horton-ai">linkedin.com/in/craig-horton-ai</a> &nbsp;·&nbsp;
+  <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a>
+  <br/>
+  &copy; 2026 Craig Horton Advisory
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+</body>
+</html>
