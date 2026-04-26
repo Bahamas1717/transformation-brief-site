@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /epam/
+Disallow: /share-cbb65973c46c/
