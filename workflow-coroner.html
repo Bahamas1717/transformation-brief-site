@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflow Coroner | Craig Horton Advisory</title>
+<meta name="description" content="Open-source agent pipeline that reads Celonis-shaped event logs, scores against the AI Business Value Framework, and emits MuleSoft Anypoint calls. End-to-end runnable today, live API adapter on the build path.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Workflow Coroner, the Stop-first AI BVF agent pipeline">
+<meta property="og:description" content="Five agents, Celonis-shaped ingestion, MuleSoft-shaped actuation. Open-source under the AI Business Value Framework.">
+<meta property="og:url" content="https://craighortonadvisory.com/workflow-coroner.html">
+<link rel="canonical" href="https://craighortonadvisory.com/workflow-coroner.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #1a2a47;
+    --navy-deep: #121f36;
+    --amber: #c97a2b;
+    --amber-soft: #e2a358;
+    --cream: #fafaf7;
+    --hairline: rgba(26, 42, 71, 0.18);
+  }
+  html, body {
+    font-family: 'Inter', -apple-system, Arial, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--amber); text-decoration: none; border-bottom: 1px solid var(--amber); }
+  a:hover { color: var(--navy); border-color: var(--navy); }
+  a.plain { border: none; }
+  a.plain:hover { border: none; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 700px) { .container { padding: 0 20px; } }
+
+  /* Nav */
+  .site-nav { background: var(--navy); position: relative; z-index: 5; }
+  .site-nav .accent-strip { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--amber) 0%, var(--amber-soft) 100%); }
+  .site-nav .nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  .nav-brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13pt; color: white; border: none; }
+  .nav-brand .advisory { color: var(--amber-soft); font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
+  .nav-brand:hover { color: white; border: none; }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.5pt; color: white; border: none; letter-spacing: 0.02em; padding: 4px 0; border-bottom: 2px solid transparent; }
+  .nav-links a:hover { color: white; border-bottom-color: var(--amber); }
+  .nav-links a.cta { background: var(--amber); padding: 8px 18px; font-weight: 600; letter-spacing: 0.06em; border: none; cursor: pointer; }
+  .nav-links a.cta:hover { background: var(--amber-soft); color: white; border: none; }
+  @media (max-width: 900px) { .nav-links { gap: 18px; } .nav-links a:not(.cta) { display: none; } }
+
+  /* Hero */
+  .hero { background: var(--navy); color: white; padding: 80px 0 100px; position: relative; overflow: hidden; }
+  .hero .glow { position: absolute; right: -240px; top: -240px; width: 820px; height: 820px; background: radial-gradient(circle, rgba(226, 163, 88, 0.28) 0%, transparent 65%); }
+  .hero .glow-bl { position: absolute; left: -200px; bottom: -240px; width: 640px; height: 640px; background: radial-gradient(circle, rgba(201, 122, 43, 0.16) 0%, transparent 70%); }
+  .hero-inner { position: relative; z-index: 2; }
+  .hero .kicker { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10.5pt; color: var(--amber-soft); letter-spacing: 0.32em; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 72pt; line-height: 1.0; color: white; letter-spacing: -0.028em; margin-bottom: 28px; }
+  @media (max-width: 700px) { .hero h1 { font-size: 44pt; } }
+  .hero h1 .amber { color: var(--amber); }
+  .hero .lede { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18pt; line-height: 1.44; color: white; max-width: 820px; margin-bottom: 36px; font-weight: 500; }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; padding-top: 30px; border-top: 1pt solid var(--amber); max-width: 820px; }
+  @media (max-width: 700px) { .hero-stats { grid-template-columns: 1fr; gap: 22px; } }
+  .hero-stat .num { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 32pt; color: var(--amber); line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .hero-stat .lbl { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 9.5pt; color: white; letter-spacing: 0.14em; line-height: 1.5; }
+
+  /* Body sections */
+  section.body { padding: 80px 0; }
+  section.body + section.body { border-top: 1px solid var(--hairline); }
+  section.body.cream-bg { background: var(--cream); }
+  section.body.white-bg { background: white; }
+  .section-kicker { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10pt; color: var(--amber); letter-spacing: 0.32em; margin-bottom: 18px; }
+  .section-head { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 36pt; line-height: 1.1; color: var(--navy); letter-spacing: -0.02em; margin-bottom: 28px; max-width: 820px; }
+  .section-head .amber { color: var(--amber); }
+  @media (max-width: 700px) { .section-head { font-size: 26pt; } }
+  .section-body { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 13pt; line-height: 1.72; color: var(--navy); margin-bottom: 18px; max-width: 780px; }
+  .section-body strong { font-weight: 600; color: var(--navy); }
+
+  /* Agent grid */
+  .agents-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; max-width: 980px; }
+  @media (max-width: 760px) { .agents-grid { grid-template-columns: 1fr; } }
+  .agent { background: white; padding: 24px 26px; border-left: 3px solid var(--amber); }
+  .agent.full { grid-column: 1 / -1; background: linear-gradient(90deg, rgba(226, 163, 88, 0.06), transparent 60%); border-left-color: var(--amber-soft); }
+  .agent-tag { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber); letter-spacing: 0.26em; margin-bottom: 8px; }
+  .agent.full .agent-tag { color: var(--amber-soft); }
+  .agent-name { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22pt; line-height: 1.1; color: var(--navy); margin-bottom: 10px; letter-spacing: -0.014em; }
+  .agent-desc { font-family: 'Inter', sans-serif; font-size: 11pt; line-height: 1.62; color: var(--navy); }
+
+  /* Verdict cards */
+  .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; max-width: 980px; }
+  @media (max-width: 760px) { .verdict-grid { grid-template-columns: 1fr; } }
+  .vcard { background: white; padding: 30px 30px 26px; border: 1px solid var(--hairline); border-top: 3px solid var(--amber); }
+  .vcard .vtag { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber); letter-spacing: 0.26em; margin-bottom: 12px; }
+  .vcard h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 22pt; line-height: 1.18; color: var(--navy); letter-spacing: -0.014em; margin-bottom: 16px; }
+  .vrow { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--hairline); font-size: 10.5pt; font-family: 'Inter', sans-serif; }
+  .vrow:last-of-type { border-bottom: none; }
+  .vkey { color: rgba(26, 42, 71, 0.65); }
+  .vval { color: var(--navy); font-weight: 600; text-align: right; }
+  .vruling { font-family: 'Cormorant Garamond', Georgia, serif; color: var(--amber); font-weight: 700; font-size: 14pt; }
+  .vpunch { margin-top: 18px; padding-top: 16px; border-top: 2px solid var(--amber); font-size: 11pt; line-height: 1.55; color: var(--navy); }
+  .vpunch strong { color: var(--amber); font-weight: 700; }
+
+  /* Roadmap */
+  .roadmap { display: grid; gap: 12px; margin-top: 28px; max-width: 900px; }
+  .road-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 16px 18px; background: white; border-left: 3px solid var(--amber); }
+  @media (max-width: 700px) { .road-row { grid-template-columns: 1fr; gap: 6px; } }
+  .road-when { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10pt; color: var(--amber); letter-spacing: 0.18em; padding-top: 4px; }
+  .road-what { font-family: 'Inter', sans-serif; font-size: 12pt; line-height: 1.65; color: var(--navy); }
+  .road-what strong { font-weight: 600; }
+
+  /* Score-your-own callout */
+  .score-cta { background: var(--navy); color: white; padding: 70px 0; position: relative; overflow: hidden; }
+  .score-cta .glow-tr { position: absolute; right: -200px; top: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(226, 163, 88, 0.22) 0%, transparent 65%); }
+  .score-cta .inner { position: relative; z-index: 2; }
+  .score-cta .kicker { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10pt; color: var(--amber-soft); letter-spacing: 0.32em; margin-bottom: 18px; }
+  .score-cta h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 36pt; line-height: 1.1; color: white; letter-spacing: -0.02em; margin-bottom: 24px; max-width: 820px; }
+  @media (max-width: 700px) { .score-cta h2 { font-size: 26pt; } }
+  .score-cta h2 .amber { color: var(--amber); }
+  .score-cta p { font-family: 'Inter', sans-serif; font-size: 13pt; line-height: 1.7; color: white; max-width: 780px; margin-bottom: 28px; }
+  .score-cta .actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .score-cta .btn-primary { display: inline-block; background: var(--amber); color: white; padding: 14px 32px; border: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11pt; letter-spacing: 0.1em; cursor: pointer; }
+  .score-cta .btn-primary:hover { background: var(--amber-soft); color: white; border: none; }
+  .score-cta .btn-secondary { display: inline-block; background: transparent; color: var(--amber); padding: 14px 28px; border: 1px solid var(--amber); font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11pt; letter-spacing: 0.06em; }
+  .score-cta .btn-secondary:hover { background: var(--amber); color: white; border-color: var(--amber); }
+
+  /* Run it block */
+  .run-it { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; max-width: 980px; }
+  @media (max-width: 760px) { .run-it { grid-template-columns: 1fr; } }
+  .run-card { background: white; padding: 24px 26px; border-left: 3px solid var(--amber); }
+  .run-card .label { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber); letter-spacing: 0.26em; margin-bottom: 8px; }
+  .run-card .head { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 18pt; line-height: 1.2; color: var(--navy); margin-bottom: 6px; }
+  .run-card .body { font-family: 'Inter', sans-serif; font-size: 11pt; line-height: 1.6; color: var(--navy); margin-bottom: 10px; }
+  .run-card code { font-family: 'Cascadia Code', Consolas, monospace; font-size: 10pt; background: var(--cream); padding: 2px 8px; border-radius: 2px; color: var(--navy); border: 1px solid var(--hairline); }
+
+  /* Contact CTA */
+  .contact-cta { background: var(--navy); color: white; padding: 80px 0; position: relative; overflow: hidden; text-align: center; }
+  .contact-cta .glow { position: absolute; left: 50%; top: -300px; transform: translateX(-50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(226, 163, 88, 0.22) 0%, transparent 65%); }
+  .contact-cta .inner { position: relative; z-index: 2; }
+  .contact-cta .kicker { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10pt; color: var(--amber-soft); letter-spacing: 0.32em; margin-bottom: 18px; }
+  .contact-cta h2 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 38pt; line-height: 1.1; color: white; letter-spacing: -0.02em; max-width: 820px; margin: 0 auto 22px; }
+  @media (max-width: 700px) { .contact-cta h2 { font-size: 26pt; } }
+  .contact-cta p { font-family: 'Inter', sans-serif; font-size: 12pt; line-height: 1.7; color: white; max-width: 640px; margin: 0 auto 32px; }
+  .contact-cta .btn { display: inline-block; background: var(--amber); color: white; padding: 14px 32px; border: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11pt; letter-spacing: 0.1em; cursor: pointer; }
+  .contact-cta .btn:hover { background: var(--amber-soft); color: white; border: none; }
+
+  /* Footer */
+  .footer { background: var(--navy-deep); color: white; padding: 32px 0; font-family: 'Inter', sans-serif; font-size: 10pt; }
+  .footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer a { color: var(--amber-soft); border-bottom: 1px solid var(--amber-soft); }
+  .footer a:hover { color: white; border-color: white; }
+</style>
+</head>
+<body>
+
+<div class="site-nav">
+  <div class="accent-strip"></div>
+  <div class="container">
+    <nav class="nav">
+      <a href="./index.html" class="nav-brand plain">Craig Horton <span class="advisory">Advisory</span></a>
+      <div class="nav-links">
+        <a href="./archive.html">The Brief</a>
+        <a href="./end-of-the-org-chart.html">Thinking</a>
+        <a href="./diagnostic.html">Diagnostic</a>
+        <a href="https://bvf.craighortonadvisory.com/?code=bvf2026">AI BVF</a>
+        <a href="./about.html">About</a>
+        <a href="" class="cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});}return false;">Get in Touch</a>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="glow"></div>
+  <div class="glow-bl"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="kicker">Workflow Coroner  ·  AI BVF on Celonis and MuleSoft</div>
+      <h1><span class="amber">Stop</span> the wrong work before <span class="amber">AI</span> automates it.</h1>
+      <p class="lede">An open-source agent pipeline that reads Celonis-shaped event logs, scores the workflow against the AI Business Value Framework, and emits MuleSoft Anypoint calls when the ruling is Stop. Five agents under one orchestrator, two fixtures, end-to-end runnable on a laptop in 30 seconds.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">5</div>
+          <div class="lbl">agents under one orchestrator</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">2.76M EUR</div>
+          <div class="lbl">annual saving on the Stop fixture</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">90 days</div>
+          <div class="lbl">rollout plan from the Sequencer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="body cream-bg">
+  <div class="container">
+    <div class="section-kicker">how it sits with the AI BVF</div>
+    <h2 class="section-head">Phase 2 of the AI BVF, the workflow pipeline.</h2>
+    <p class="section-body">The AI BVF is the decision layer, the scoring engine and public protocol that grade any AI initiative against four pillars and return Stop, Fix, Accelerate, or Keep. The Workflow Coroner is what happens when that decision layer wraps an actual process estate, the same scoring engine applied across an end-to-end pipeline.</p>
+
+    <div class="agents-grid">
+      <div class="agent">
+        <div class="agent-tag">phase 1</div>
+        <div class="agent-name">AI BVF</div>
+        <div class="agent-desc">The scoring engine, the public protocol at <a href="https://bvf-app.vercel.app/protocol">bvf-app.vercel.app/protocol</a>, the live scorer at <a href="https://bvf-app.vercel.app/protocol/scorer">/protocol/scorer</a>, plus aibvf-mcp on the MCP registry. Built first, currently live, 908 npm pulls in the first 30 days. The decision layer.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">phase 2</div>
+        <div class="agent-name">Workflow Coroner</div>
+        <div class="agent-desc">Five-agent pipeline that reads Celonis-shaped event logs and emits MuleSoft-shaped Anypoint calls, with the AI BVF inside Verdict as the scoring layer. Built on top of Phase 1, same engine, applied to a whole workflow rather than a single initiative.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="body white-bg">
+  <div class="container">
+    <div class="section-kicker">what it is</div>
+    <h2 class="section-head">One orchestrator, five agents, the AI BVF in the middle.</h2>
+    <p class="section-body">The Workflow Coroner is the public reference build that shows how the AI Business Value Framework (AI BVF) lands inside an enterprise process estate. Pulse ingests workflow data shaped like Celonis Process Intelligence exports, Verdict scores against the AI BVF, Architect drafts the target state, Wire emits MuleSoft Anypoint calls, and Sequencer ranks the portfolio into a 90-day plan. The Coroner orchestrates the five and writes the artefacts to disk, the buyer reads a single envelope.</p>
+    <p class="section-body">The pipeline is open source, MIT-licensed, and reproduces deterministically. Anyone can run it against the included fixtures or their own Celonis-shaped JSON, the verdict comes back with EUR drag and saving denominated, and the source code carries the whole rule set.</p>
+
+    <div class="agents-grid">
+      <div class="agent full">
+        <div class="agent-tag">orchestrator</div>
+        <div class="agent-name">Coroner</div>
+        <div class="agent-desc">The runner. Loads the fixtures, dispatches each workflow through the five agents in order, persists the artefacts, renders the verdict card and the 90-day plan. Mode switch on env vars decides whether Verdict runs deterministic Python or a Claude sub-agent.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">pulse</div>
+        <div class="agent-name">Pulse</div>
+        <div class="agent-desc">Reads the event log, classifies the workflow by pace layer (framing per Jeroen Tas), infers AI tier and readiness from rework, exception, and automation-coverage signals.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">verdict</div>
+        <div class="agent-name">Verdict</div>
+        <div class="agent-desc">Derives AI BVF pillar scores, calls the AI BVF scoring engine, returns Stop, Fix, Accelerate, or Keep. Ships deterministic, or as a Claude Sonnet 4.5 sub-agent that attaches a senior-practitioner rationale.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">architect</div>
+        <div class="agent-name">Architect</div>
+        <div class="agent-desc">Branches on the ruling. On Stop drafts an elimination plan and a Prosci-grade change-management treatment, on Fix proposes pillar raises, on Accelerate designs an agentic deployment in shadow mode.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">wire</div>
+        <div class="agent-name">Wire</div>
+        <div class="agent-desc">Emits MuleSoft Anypoint DELETE, PATCH, or POST calls per ruling, writes a JSON decommission log and a markdown change-management plan, holds a 30-day rollback transaction in escrow.</div>
+      </div>
+      <div class="agent">
+        <div class="agent-tag">sequencer</div>
+        <div class="agent-name">Sequencer</div>
+        <div class="agent-desc">Takes a portfolio of rulings and returns the 90-day rollout plan with named gates. Wave 1 days 1-30 all Stops, Wave 2 days 31-60 quick Accelerates, Wave 3 days 61-90 complex Accelerates plus Fixes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="body cream-bg">
+  <div class="container">
+    <div class="section-kicker">two verdicts shipped</div>
+    <h2 class="section-head">Same engine, opposite verdicts.</h2>
+    <p class="section-body">Two real fixtures ship with the Coroner. The same five-agent pipeline produces opposite rulings depending on the workflow signals, the AI BVF decides which way each one goes.</p>
+
+    <div class="verdict-grid">
+      <div class="vcard">
+        <div class="vtag">stop</div>
+        <h3>procurement-approval-flow</h3>
+        <div class="vrow"><span class="vkey">company shape</span><span class="vval">2.4B EUR industrial</span></div>
+        <div class="vrow"><span class="vkey">activities</span><span class="vval">14 steps, 11 integrations</span></div>
+        <div class="vrow"><span class="vkey">readiness</span><span class="vval">siloed, gen2</span></div>
+        <div class="vrow"><span class="vkey">bvf health</span><span class="vval">32%</span></div>
+        <div class="vrow"><span class="vkey">ruling</span><span class="vval vruling">Stop</span></div>
+        <div class="vpunch">Eliminates 11 of 14 steps under one delegated approval rule. Annual saving <strong>2.76M EUR</strong>. New AI initiatives required, <strong>zero</strong>.</div>
+      </div>
+      <div class="vcard">
+        <div class="vtag">accelerate</div>
+        <h3>customer-ticket-triage</h3>
+        <div class="vrow"><span class="vkey">company shape</span><span class="vval">800M EUR software</span></div>
+        <div class="vrow"><span class="vkey">activities</span><span class="vval">10 steps, 4 integrations</span></div>
+        <div class="vrow"><span class="vkey">readiness</span><span class="vval">agile, gen3</span></div>
+        <div class="vrow"><span class="vkey">bvf health</span><span class="vval">76%</span></div>
+        <div class="vrow"><span class="vkey">ruling</span><span class="vval vruling">Accelerate</span></div>
+        <div class="vpunch">All four pillars cleared. Net opportunity <strong>36.7M to 108M EUR</strong>. Deployed gen3 agentic in shadow mode for 30 days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="score-cta">
+  <div class="glow-tr"></div>
+  <div class="container inner">
+    <div class="kicker">Score your own</div>
+    <h2>See what the AI BVF says about <span class="amber">your</span> AI initiative.</h2>
+    <p>Drop in your industry, function, AI tier, readiness, and pillar scores. The scorer returns Stop, Fix, Accelerate, or Keep with EUR ranges grounded in McKinsey, Gartner, BCG, Deloitte, Forrester, Accenture, and ServiceNow benchmarks. Same engine that scored the procurement and triage fixtures above, your inputs land your own verdict.</p>
+    <div class="actions">
+      <a href="https://bvf-app.vercel.app/protocol/scorer" class="btn-primary plain" target="_blank" rel="noopener">Open the scorer</a>
+      <a href="https://bvf-app.vercel.app/protocol" class="btn-secondary plain" target="_blank" rel="noopener">Read the protocol</a>
+    </div>
+  </div>
+</section>
+
+<section class="body white-bg">
+  <div class="container">
+    <div class="section-kicker">how it integrates today</div>
+    <h2 class="section-head">Celonis-shaped, MuleSoft-shaped, mock today, live on the build path.</h2>
+    <p class="section-body">The honest current state, the integration contracts are real but the wires to a customer's tenant are not yet plugged in. Pulse reads JSON in the exact shape a Celonis Process Intelligence export produces, the Coroner runs the pipeline end to end, and Wire emits Anypoint-shaped DELETE / PATCH / POST calls that mirror what a real MuleSoft connector would accept. The contracts match production, the calls do not leave the host.</p>
+    <p class="section-body">Two reasons for shipping the mock first. Buyer trust, the rule engine, the verdict logic, and the saving calculation are all auditable on GitHub before any tenant is connected. Build discipline, contracts harden against fixtures before they touch live data, which is the cheapest place for the contracts to fail.</p>
+    <p class="section-body">The live API adapter sits in weeks 1 to 2 of the platform build path below. The Coroner's design is built for the swap, the live adapter slots into the same Pulse interface that the fixture uses today, and the same Wire interface that the mock uses today.</p>
+  </div>
+</section>
+
+<section class="body cream-bg">
+  <div class="container">
+    <div class="section-kicker">the build path</div>
+    <h2 class="section-head">Twelve weeks, milestone-shaped.</h2>
+    <p class="section-body">The platform around the Coroner is private, in flight, and built for a CIO self-serve buyer. The roadmap is in the open here so any reader can see what is shipped and what is coming.</p>
+
+    <div class="roadmap">
+      <div class="road-row">
+        <div class="road-when">WEEKS 1-2</div>
+        <div class="road-what"><strong>Celonis live API adapter</strong> plus the Sequencer agent. Sequencer landed today, the Celonis adapter waits on a sandbox tenant.</div>
+      </div>
+      <div class="road-row">
+        <div class="road-when">WEEKS 3-4</div>
+        <div class="road-what"><strong>FastAPI persistent portfolios</strong>, multi-workflow batch runner, /health and /score and /portfolio endpoints. Scaffold landed today.</div>
+      </div>
+      <div class="road-row">
+        <div class="road-when">WEEKS 5-6</div>
+        <div class="road-what"><strong>Next.js dashboard</strong>, locked palette navy and amber, single CIO-facing screen that answers Where to Start, How to Start, What to Stop, What to Redesign.</div>
+      </div>
+      <div class="road-row">
+        <div class="road-when">WEEKS 7-8</div>
+        <div class="road-what"><strong>Playwright PDF export</strong>, board-ready, one-click download. The dashboard becomes the working session, the PDF becomes the board pack.</div>
+      </div>
+      <div class="road-row">
+        <div class="road-when">WEEKS 9-10</div>
+        <div class="road-what"><strong>Lead capture</strong>, alerts when a Stop verdict above 5M EUR lands, that is the sales signal worth a conversation.</div>
+      </div>
+      <div class="road-row">
+        <div class="road-when">WEEKS 11-12</div>
+        <div class="road-what"><strong>Polish, analytics, soft launch</strong> via The Transformation Brief.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="body white-bg">
+  <div class="container">
+    <div class="section-kicker">run it</div>
+    <h2 class="section-head">Open it up.</h2>
+
+    <div class="run-it">
+      <div class="run-card">
+        <div class="label">source</div>
+        <div class="head">Read or run the code</div>
+        <div class="body">Open source on GitHub, MIT-licensed. Six modules, two fixtures, runs on Python in 30 seconds.</div>
+        <a href="https://github.com/Bahamas1717/ai-bvf/tree/main/examples/workflow-coroner">github.com/Bahamas1717/ai-bvf</a>
+      </div>
+      <div class="run-card">
+        <div class="label">scoring engine</div>
+        <div class="head">aibvf-mcp on the registry</div>
+        <div class="body">The AI BVF as a Model Context Protocol server. <code>npm install -g aibvf-mcp</code>. Six stdio tools any Claude agent can call.</div>
+        <a href="https://github.com/Bahamas1717/ai-bvf">github.com/Bahamas1717/ai-bvf</a>
+      </div>
+      <div class="run-card">
+        <div class="label">brand context</div>
+        <div class="head">The Transformation Brief</div>
+        <div class="body">Weekly intelligence product for senior leaders, the publication this site sits inside. Issue 04 covered the agentic governance breaking point.</div>
+        <a href="./archive.html">Brief archive</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta">
+  <div class="glow"></div>
+  <div class="inner container">
+    <div class="kicker">A conversation, not a pitch</div>
+    <h2>Want to run the Coroner against your own Celonis export?</h2>
+    <p>Thirty minutes on the calendar, you bring the workflow data shape, I bring the AI BVF and an honest verdict. No deck, no pitch, the engine does the work.</p>
+    <a href="" class="btn" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});}return false;">Book a Call</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div>Craig Horton <strong style="color: var(--amber-soft); font-family: 'Cormorant Garamond', serif; font-weight: 500;">Advisory</strong>  ·  AI Transformation, Enterprise Strategy, Change Management</div>
+    <div>
+      <a href="https://linkedin.com/in/craig-horton-ai">LinkedIn</a>  ·
+      <a href="https://github.com/Bahamas1717/ai-bvf">GitHub</a>  ·
+      <a href="./index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+</body>
+</html>
