@@ -158,7 +158,22 @@
   .co-line { font-family: 'Inter', sans-serif; font-size: 12pt; line-height: 1.6; color: var(--navy); margin-bottom: 22px; }
   .co-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 16px 18px; background: var(--cream); margin-bottom: 18px; }
   @media (max-width: 700px) { .co-pillars { grid-template-columns: 1fr 1fr; } }
-  .co-pillar-name { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 9pt; color: rgba(26,42,71,0.65); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4px; }
+  .co-pillar-name { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 9pt; color: rgba(26,42,71,0.65); letter-spacing: 0.04em; margin-bottom: 6px; }
+
+  /* Workmate banner, slider help, Monday plan */
+  .workmate-banner { background: var(--navy); color: white; padding: 22px 26px; max-width: 720px; margin: 0 0 24px; border-left: 3px solid var(--amber-soft); }
+  .workmate-banner .workmate-tag { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber-soft); letter-spacing: 0.26em; margin-bottom: 10px; }
+  .workmate-banner .workmate-body { font-family: 'Inter', sans-serif; font-size: 11pt; line-height: 1.7; color: white; }
+  .workmate-banner .workmate-body strong { color: var(--amber-soft); font-weight: 700; }
+
+  .cf-help { font-family: 'Inter', sans-serif; font-size: 10pt; line-height: 1.5; color: rgba(26,42,71,0.7); margin: -4px 0 10px; max-width: 620px; }
+
+  .co-monday { margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--hairline); }
+  .co-monday-tag { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9pt; color: var(--amber); letter-spacing: 0.22em; margin-bottom: 12px; }
+  .co-monday-h { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 18pt; line-height: 1.2; color: var(--navy); margin-bottom: 12px; }
+  .co-monday-list { list-style: none; margin: 0; padding: 0; }
+  .co-monday-list li { font-family: 'Inter', sans-serif; font-size: 11.5pt; line-height: 1.6; color: var(--navy); padding: 6px 0 6px 22px; position: relative; }
+  .co-monday-list li::before { content: ''; position: absolute; left: 0; top: 14px; width: 7px; height: 7px; background: var(--amber); border-radius: 50%; }
   .co-pillar-val { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 700; font-size: 22pt; color: var(--navy); line-height: 1; }
   .co-eur { padding-top: 18px; border-top: 2px solid var(--amber); }
   .co-eur-row { font-family: 'Inter', sans-serif; font-size: 12pt; line-height: 1.6; color: var(--navy); margin-bottom: 6px; }
@@ -373,35 +388,42 @@
     </div>
 
     <div id="coroner-active" hidden>
-      <div class="section-kicker">Coroner verdict on your workflow</div>
-      <h2 class="section-head">One workflow question, then the verdict.</h2>
-      <p class="section-body">The AI BVF scored your initiative. The Coroner now layers workflow drag factors on top, recomputes the four pillars, and returns the workflow-level verdict.</p>
+      <div class="section-kicker">Agentic workmate, the senior-leader on-ramp</div>
+      <h2 class="section-head">A typical workflow signature, your verdict in plain English.</h2>
+      <p class="section-body">The workmate runs a typical workflow signature for your industry and function, drawn from a pre-generated profile table the workmate was seeded with. Confirm or adjust the four sliders below, then run the verdict. Nothing leaves your browser.</p>
+      <p class="section-body">This is the senior-leader on-ramp, fast, plain English, no Python. The Coroner's actual Celonis-shaped ingestion and MuleSoft Anypoint actuation lives in the technical on-ramp below, reads your real event log, runs on the open-source pipeline.</p>
 
       <div class="coroner-summary" id="coroner-summary"></div>
 
+      <div class="workmate-banner" id="workmate-banner"></div>
+
       <form class="coroner-form" id="coroner-form" onsubmit="return false;">
-        <div class="coroner-form-h">Tell the Coroner the shape of the workflow.</div>
+        <div class="coroner-form-h">Confirm the workflow shape, adjust if yours differs.</div>
         <div class="cf-row">
           <label for="cf-activities">Distinct activities in this workflow<span class="cf-val" id="cf-activities-val">10</span></label>
+          <div class="cf-help">The discrete steps from trigger to completion. A typical procurement approval has 12 to 16, a typical service ticket triage has 8 to 12.</div>
           <input type="range" id="cf-activities" min="1" max="30" value="10">
         </div>
         <div class="cf-row">
           <label for="cf-integrations">System integrations involved<span class="cf-val" id="cf-integrations-val">4</span></label>
+          <div class="cf-help">Distinct systems the workflow touches, including ERP, CRM, identity, ticketing, and any custom internal system.</div>
           <input type="range" id="cf-integrations" min="0" max="20" value="4">
         </div>
         <div class="cf-row">
           <label for="cf-exception">Exception or rework rate<span class="cf-val" id="cf-exception-val">15</span><span style="color:var(--navy);font-weight:500;">%</span></label>
+          <div class="cf-help">Share of workflow runs that need manual intervention, rework, or escalation. Below 10 percent is healthy, above 25 percent signals drag.</div>
           <input type="range" id="cf-exception" min="0" max="60" value="15">
         </div>
         <div class="cf-row">
           <label for="cf-authority">Decision authority shape</label>
+          <div class="cf-help">Who signs off the end-to-end decision the workflow produces. Delegated chains compound drag, single owners decide fast.</div>
           <select id="cf-authority">
             <option value="single">Single owner, decisive</option>
             <option value="committee">Committee sign-off</option>
             <option value="delegated">Delegated multi-step approval chain</option>
           </select>
         </div>
-        <button type="button" id="cf-submit" class="cf-submit">Run the Coroner</button>
+        <button type="button" id="cf-submit" class="cf-submit">Run the workmate</button>
       </form>
 
       <div class="coroner-output" id="coroner-output" hidden></div>
@@ -433,6 +455,268 @@
   var TIER_LABEL = { gen1: 'Gen 1, scripted', gen2: 'Gen 2, GenAI assist', gen3: 'Gen 3, agentic' };
   var READINESS_LABEL = { agile: 'Agile, collaborative', traditional: 'Traditional hierarchy', siloed: 'Siloed, bureaucratic' };
   var INDUSTRY_LABEL = { manufacturing: 'Manufacturing & Supply Chain', financial_services: 'Financial Services', healthcare: 'Healthcare', retail: 'Retail', tech: 'Technology', professional_services: 'Professional Services', public: 'Public sector', energy: 'Energy', telecom: 'Telecom', media: 'Media' };
+
+  var WORKFLOW_PROFILES = {
+    finance: {
+      name: 'month-end close and reporting cycle',
+      activities: 16, integrations: 8, exception: 18, authority: 'committee',
+      monday: {
+        Stop: [
+          'Name the four reconciliation steps the agent layer makes redundant in the next finance review',
+          'Migrate the audit trail to the agent\'s structured log output before fiscal year end',
+          'Repurpose the reconciliation hours to forecasting and scenario planning'
+        ],
+        Fix: [
+          'Run a 30-day exception audit on the manual journal entries, name the top three sources',
+          'Re-score Strategic Alignment with the FP&A leader before any further AI spend on this workflow',
+          'Hold the agent rollout to the lowest-exception sub-process for the first thirty days'
+        ],
+        Accelerate: [
+          'Deploy in shadow mode for thirty days, no autonomous decisions during the validation window',
+          'Stand up the agent observability dashboard on day one, controllership owns it',
+          'Cap programme spend at ten percent change management until shadow validation closes'
+        ],
+        Keep: [
+          'Document the current workflow as the operating baseline, the agent layer can wait one more cycle',
+          'Re-baseline pillar scores after the next quarterly close',
+          'Review against the AI BVF in ninety days'
+        ]
+      }
+    },
+    hr: {
+      name: 'hiring and onboarding pipeline',
+      activities: 12, integrations: 5, exception: 14, authority: 'delegated',
+      monday: {
+        Stop: [
+          'Eliminate the manual screening passes the agent makes redundant, retire the role descriptions that wrap around them',
+          'Route candidate-stage transitions through the agent, send exceptions to the hiring manager',
+          'Reinvest recruiter capacity into pipeline build and talent intelligence'
+        ],
+        Fix: [
+          'Audit screening decisions against the agent\'s last thirty days, name the bias risks',
+          'Add a human review checkpoint at the offer stage, no autonomous offer decisions',
+          'Re-baseline Change Enablement with the HRBP team before scaling beyond one function'
+        ],
+        Accelerate: [
+          'Run the agent in shadow on the lowest-risk requisitions for thirty days, recruiters retain final say',
+          'Build the candidate-experience dashboard, watch for drop-off signals weekly',
+          'Sign off the rollout with the works council or equivalent before any agentic offer decisions'
+        ],
+        Keep: [
+          'Hold the current process, the agent layer can wait until the data foundation is in',
+          'Stand up a single source of truth for candidate stage transitions',
+          'Re-score readiness in ninety days'
+        ]
+      }
+    },
+    sales: {
+      name: 'pipeline qualification and forecasting',
+      activities: 10, integrations: 6, exception: 12, authority: 'single',
+      monday: {
+        Stop: [
+          'Eliminate the manual stage-update calls the agent makes redundant, route exceptions to the rep',
+          'Migrate forecast accuracy reporting to the agent\'s structured output, replace the spreadsheet model',
+          'Reinvest rep capacity into new logo discovery and account expansion'
+        ],
+        Fix: [
+          'Audit the agent\'s qualification calls against the last thirty days of closed deals, name the false negatives',
+          'Hold the agent to coaching mode for thirty days, no autonomous deal advancement',
+          'Re-score Financial Return with the CRO once qualification accuracy data is in'
+        ],
+        Accelerate: [
+          'Ship the agent in shadow on top-of-funnel only for thirty days, no late-stage interventions',
+          'Build the rep-coaching dashboard, watch agent recommendations against rep decisions weekly',
+          'Cap autonomous deal advancement at SMB until the playbook proves out on enterprise'
+        ],
+        Keep: [
+          'Hold the current sales motion, layer the agent in once the CRM data quality is fixed',
+          'Stand up forecast hygiene as the gating metric for any further agentic spend',
+          'Re-score in ninety days'
+        ]
+      }
+    },
+    supply: {
+      name: 'procurement and supplier approval flow',
+      activities: 14, integrations: 11, exception: 23, authority: 'delegated',
+      monday: {
+        Stop: [
+          'Eliminate the 11 of 14 approval steps the agent makes redundant under one delegated rule',
+          'Migrate the audit trail and policy enforcement to the agent\'s structured emit',
+          'Reinvest the procurement team\'s approval hours into supplier intelligence and risk monitoring'
+        ],
+        Fix: [
+          'Audit the exception rate by supplier category, name the three categories that drive the bulk of the load',
+          'Add an explicit threshold rule for autonomous approvals, exceptions flow to a single owner not a chain',
+          'Hold the rollout to indirect spend for the first thirty days, retain direct spend in human-in-the-loop'
+        ],
+        Accelerate: [
+          'Deploy in shadow on indirect spend for thirty days, procurement retains all final approvals',
+          'Build the supplier-risk dashboard, watch agent-flagged anomalies daily for the first month',
+          'Sign off the rollout with the CFO before extending into direct spend'
+        ],
+        Keep: [
+          'Hold the current approval flow, agentic redesign waits until supplier data is in one system',
+          'Stand up a supplier master data programme as the gating dependency',
+          'Re-score in ninety days'
+        ]
+      }
+    },
+    cx: {
+      name: 'customer service ticket triage and resolution',
+      activities: 10, integrations: 4, exception: 8, authority: 'single',
+      monday: {
+        Stop: [
+          'Eliminate the manual triage queue the agent makes redundant, route exceptions to a single owner',
+          'Migrate the case categorisation taxonomy to the agent\'s emit, retire the manual tagging spreadsheets',
+          'Reinvest the support team\'s triage capacity into proactive customer intelligence'
+        ],
+        Fix: [
+          'Audit the agent\'s resolution rate against the last thirty days, name the case types it underperforms on',
+          'Add a human escalation rule for billing disputes, no autonomous billing decisions during validation',
+          'Re-score Strategic Alignment with the head of customer operations before further expansion'
+        ],
+        Accelerate: [
+          'Ship the agent in shadow on tier-one tickets for thirty days, agents retain final response approval',
+          'Stand up the customer-sentiment dashboard on day one, watch CSAT alongside resolution speed',
+          'Cap the autonomous response at three exchanges before a human takes over the conversation'
+        ],
+        Keep: [
+          'Hold the current resolution flow, the agent waits until the knowledge base is consolidated',
+          'Stand up a single agent-readable knowledge base as the gating dependency',
+          'Re-score in ninety days'
+        ]
+      }
+    },
+    risk: {
+      name: 'transaction monitoring and risk review',
+      activities: 13, integrations: 9, exception: 19, authority: 'committee',
+      monday: {
+        Stop: [
+          'Eliminate the duplicate review steps the agent makes redundant, retain the audit trail in the agent\'s log',
+          'Move the standard rules engine to the agent\'s emit, free the risk team to design the exceptions',
+          'Reinvest the analyst hours into model validation and adversarial review'
+        ],
+        Fix: [
+          'Audit the agent\'s false-positive rate over the last thirty days, name the three rules driving the bulk',
+          'Add a mandatory committee review for any agent decision above a defined threshold',
+          'Re-baseline Governance Risk with the chief risk officer before any autonomous decisions ship'
+        ],
+        Accelerate: [
+          'Run the agent in shadow on low-severity transactions for thirty days, the committee retains all sign-off',
+          'Build the model-drift dashboard, watch agent recommendations against committee overrides weekly',
+          'Sign off the rollout with the regulator-facing function before extending coverage'
+        ],
+        Keep: [
+          'Hold the current review flow, agentic redesign waits until the model risk framework lands',
+          'Stand up model governance as the gating dependency for any further agentic spend',
+          'Re-score in ninety days'
+        ]
+      }
+    },
+    it: {
+      name: 'incident ticket and operations response',
+      activities: 11, integrations: 7, exception: 16, authority: 'single',
+      monday: {
+        Stop: [
+          'Eliminate the manual incident-classification step the agent makes redundant, route exceptions to the on-call lead',
+          'Migrate the runbook execution to the agent, retire the human script-following work',
+          'Reinvest the operations team\'s classification capacity into reliability engineering'
+        ],
+        Fix: [
+          'Audit the agent\'s resolution accuracy against the last thirty days of post-mortems, name the failure modes',
+          'Add a confirmation step for any change-control action, no autonomous production changes during validation',
+          'Re-score Change Enablement with the head of operations before scaling to tier-zero services'
+        ],
+        Accelerate: [
+          'Ship the agent in shadow on tier-three and tier-four incidents for thirty days, on-call retains final say',
+          'Stand up the incident-flow dashboard on day one, watch MTTR and agent-against-human resolution rates',
+          'Cap the autonomous remediation scope to read-only and notification actions until shadow validation closes'
+        ],
+        Keep: [
+          'Hold the current incident response model, agentic remediation waits until the runbook coverage is complete',
+          'Stand up runbook automation as the gating dependency for the agent layer',
+          'Re-score in ninety days'
+        ]
+      }
+    },
+    rd: {
+      name: 'research and product discovery cycle',
+      activities: 9, integrations: 4, exception: 11, authority: 'single',
+      monday: {
+        Stop: [
+          'Eliminate the manual literature-review pass the agent makes redundant, retain the synthesis in the agent\'s emit',
+          'Migrate the experiment-tracking template work to the agent, free researchers for hypothesis design',
+          'Reinvest researcher hours into experimental design and adversarial review'
+        ],
+        Fix: [
+          'Audit the agent\'s synthesis quality against the last thirty days of research outputs, name the weak spots',
+          'Add a human review checkpoint before any synthesis ships to the product roadmap',
+          'Re-baseline Strategic Alignment with the head of product before scaling beyond one team'
+        ],
+        Accelerate: [
+          'Run the agent in shadow on internal research only for thirty days, researchers retain final synthesis',
+          'Build the experiment-velocity dashboard, watch agent-suggested experiments against adopted experiments',
+          'Cap the autonomous synthesis scope to internal documentation until external-facing review process exists'
+        ],
+        Keep: [
+          'Hold the current research cycle, the agent waits until the experiment-tracking platform is in',
+          'Stand up the experiment platform as the gating dependency for the agent layer',
+          'Re-score in ninety days'
+        ]
+      }
+    }
+  };
+
+  var INDUSTRY_TWEAKS = {
+    manufacturing: { integrations: 3, exception: 2 },
+    financial_services: { exception: 5, authority: 'committee' },
+    healthcare: { exception: 6, authority: 'delegated' },
+    retail: { activities: 2, exception: -2 },
+    tech: { exception: -3 },
+    professional_services: { activities: 1 },
+    public: { exception: 4, authority: 'committee' },
+    energy: { exception: 3, integrations: 2 },
+    telecom: { integrations: 2 },
+    media: { activities: 1 }
+  };
+
+  function prefillProfile(ai) {
+    var p = WORKFLOW_PROFILES[ai.fn];
+    if (!p) return null;
+    var t = INDUSTRY_TWEAKS[ai.industry] || {};
+    return {
+      name: p.name,
+      activities: Math.max(1, Math.min(30, p.activities + (t.activities || 0))),
+      integrations: Math.max(0, Math.min(20, p.integrations + (t.integrations || 0))),
+      exception: Math.max(0, Math.min(60, p.exception + (t.exception || 0))),
+      authority: t.authority || p.authority,
+      monday: p.monday
+    };
+  }
+
+  function applyProfile(profile) {
+    document.getElementById('cf-activities').value = profile.activities;
+    document.getElementById('cf-activities-val').textContent = profile.activities;
+    document.getElementById('cf-integrations').value = profile.integrations;
+    document.getElementById('cf-integrations-val').textContent = profile.integrations;
+    document.getElementById('cf-exception').value = profile.exception;
+    document.getElementById('cf-exception-val').textContent = profile.exception;
+    document.getElementById('cf-authority').value = profile.authority;
+  }
+
+  function renderWorkmateBanner(profile, ai) {
+    var el = document.getElementById('workmate-banner');
+    var industryLabel = INDUSTRY_LABEL[ai.industry] || ai.industry;
+    var authorityWord = profile.authority === 'delegated' ? 'a delegated multi-step approval chain' : profile.authority === 'committee' ? 'committee sign-off' : 'a single decisive owner';
+    el.innerHTML = ''
+      + '<div class="workmate-tag">agentic workmate has analysed your inputs</div>'
+      + '<div class="workmate-body">'
+      +   '<strong>The typical ' + profile.name + ' in ' + industryLabel + '</strong> '
+      +   'runs ' + profile.activities + ' activities across ' + profile.integrations + ' system integrations, '
+      +   'a ' + profile.exception + ' percent exception rate, and ' + authorityWord + '. '
+      +   'The four sliders below have been set to this profile. Confirm or adjust, then run the workmate.'
+      + '</div>';
+  }
 
   function fmtEUR(n) {
     if (!isFinite(n)) return '—';
@@ -484,29 +768,44 @@
       + '<span class="key">Function</span><span class="val">' + (FN_LABEL[ai.fn] || ai.fn) + '</span>'
       + '<span class="key">AI tier</span><span class="val">' + (TIER_LABEL[ai.tier] || ai.tier) + '</span>'
       + '<span class="key">Readiness</span><span class="val">' + (READINESS_LABEL[ai.readiness] || ai.readiness) + '</span>'
-      + '<span class="key">AI BVF pillars</span><span class="val">SA ' + ai.sa + ' &middot; FR ' + ai.fr + ' &middot; CE ' + ai.ce + ' &middot; GR ' + ai.gr + '</span>';
+      + '<span class="key">AI BVF pillars</span><span class="val">Strategic Alignment ' + ai.sa + ' &middot; Financial Return ' + ai.fr + ' &middot; Change Enablement ' + ai.ce + ' &middot; Governance Risk ' + ai.gr + '</span>';
   }
 
-  function renderResult(ai, wf, r) {
+  function renderResult(ai, wf, r, profile) {
     var o = document.getElementById('coroner-output');
     o.hidden = false;
+    var mondayBlock = '';
+    if (profile && profile.monday && profile.monday[r.label]) {
+      var actions = profile.monday[r.label];
+      var listItems = '';
+      for (var i = 0; i < actions.length; i++) {
+        listItems += '<li>' + actions[i] + '</li>';
+      }
+      mondayBlock = ''
+        + '<div class="co-monday">'
+        +   '<div class="co-monday-tag">your Monday plan</div>'
+        +   '<div class="co-monday-h">Three moves for the ' + profile.name + ' under a ' + r.label + ' ruling.</div>'
+        +   '<ul class="co-monday-list">' + listItems + '</ul>'
+        + '</div>';
+    }
     o.innerHTML = ''
       + '<div class="co-card">'
-      +   '<div class="co-tag">coroner verdict</div>'
+      +   '<div class="co-tag">workmate verdict</div>'
       +   '<div class="co-ruling" style="color:' + r.tone + '">' + r.label + '</div>'
       +   '<div class="co-line">' + r.line + '</div>'
       +   '<div class="co-pillars">'
-      +     '<div><div class="co-pillar-name">SA</div><div class="co-pillar-val">' + r.sa_adj + '</div></div>'
-      +     '<div><div class="co-pillar-name">FR</div><div class="co-pillar-val">' + r.fr_adj + '</div></div>'
-      +     '<div><div class="co-pillar-name">CE</div><div class="co-pillar-val">' + r.ce_adj + '</div></div>'
-      +     '<div><div class="co-pillar-name">GR</div><div class="co-pillar-val">' + r.gr_adj + '</div></div>'
+      +     '<div><div class="co-pillar-name">Strategic Alignment</div><div class="co-pillar-val">' + r.sa_adj + '</div></div>'
+      +     '<div><div class="co-pillar-name">Financial Return</div><div class="co-pillar-val">' + r.fr_adj + '</div></div>'
+      +     '<div><div class="co-pillar-name">Change Enablement</div><div class="co-pillar-val">' + r.ce_adj + '</div></div>'
+      +     '<div><div class="co-pillar-name">Governance Risk</div><div class="co-pillar-val">' + r.gr_adj + '</div></div>'
       +   '</div>'
       +   '<div class="co-eur">'
       +     '<div class="co-eur-row">Annual workflow drag, modelled: <strong>' + fmtEUR(r.drag) + '</strong></div>'
       +     (r.saving ? '<div class="co-eur-row">Annual saving on a Stop ruling: <strong>' + fmtEUR(r.saving) + '</strong></div>' : '')
       +   '</div>'
+      +   mondayBlock
       + '</div>'
-      + '<p class="section-body" style="margin-top:18px;">This is the Verdict layer only. The full Coroner envelope (Architect target-state plan, Wire MuleSoft Anypoint calls, Sequencer 90-day rollout) runs end-to-end on Python in the open-source repo. <a href="https://github.com/Bahamas1717/ai-bvf/tree/main/examples/workflow-coroner">See the full pipeline on GitHub</a>.</p>';
+      + '<p class="section-body" style="margin-top:18px;">This is the Verdict layer with the Monday plan attached. The full Coroner envelope, Architect target-state plan, Wire MuleSoft Anypoint calls, Sequencer 90-day rollout across the portfolio, runs end-to-end on Python in the open-source repo. <a href="https://github.com/Bahamas1717/ai-bvf/tree/main/examples/workflow-coroner">See the full pipeline on GitHub</a>.</p>';
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -515,12 +814,22 @@
     document.getElementById('coroner-empty').hidden = true;
     document.getElementById('coroner-active').hidden = false;
     renderSummary(ai);
+
+    var profile = prefillProfile(ai);
+    if (profile) {
+      applyProfile(profile);
+      renderWorkmateBanner(profile, ai);
+    } else {
+      document.getElementById('workmate-banner').style.display = 'none';
+    }
+
     var fields = ['activities', 'integrations', 'exception'];
     fields.forEach(function(f) {
       var el = document.getElementById('cf-' + f);
       var valEl = document.getElementById('cf-' + f + '-val');
       el.addEventListener('input', function() { valEl.textContent = el.value; });
     });
+
     document.getElementById('cf-submit').addEventListener('click', function() {
       var wf = {
         activities: Number(document.getElementById('cf-activities').value),
@@ -529,10 +838,17 @@
         authority: document.getElementById('cf-authority').value
       };
       var r = compute(ai, wf);
-      renderResult(ai, wf, r);
+      renderResult(ai, wf, r, profile);
       setTimeout(function() {
         document.getElementById('coroner-output').scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 60);
+    });
+
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var anchor = document.getElementById('coroner-active');
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
     });
   });
 })();
