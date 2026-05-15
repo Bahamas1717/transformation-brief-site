@@ -227,6 +227,56 @@
     text-decoration: none;
   }
   .subscribe .btn:hover { background: var(--amber-soft); border: none; color: white; }
+  .subscribe-form {
+    display: flex;
+    gap: 0;
+    max-width: 520px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .subscribe-form input[type="email"] {
+    flex: 1 1 280px;
+    min-width: 0;
+    background: white;
+    border: none;
+    padding: 14px 18px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 11pt;
+    color: var(--navy);
+    outline: none;
+  }
+  .subscribe-form input[type="email"]:focus { box-shadow: inset 0 -3px 0 var(--amber); }
+  .subscribe-form button {
+    background: var(--amber);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    letter-spacing: 0.12em;
+    padding: 14px 28px;
+    border: none;
+    cursor: pointer;
+  }
+  .subscribe-form button:hover { background: var(--amber-soft); }
+  .subscribe-form button[disabled] { opacity: 0.6; cursor: wait; }
+  .subscribe-status {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 10pt;
+    color: var(--amber-soft);
+    min-height: 1.2em;
+    margin-bottom: 4px;
+  }
+  .subscribe-status.ok { color: var(--amber-soft); }
+  .subscribe-status.err { color: #ffb4a8; }
+  .subscribe-hint {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 9.5pt;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0;
+    max-width: 640px;
+  }
+  .subscribe-hint a { color: var(--amber-soft); border-color: rgba(226,163,88,0.4); }
+  .subscribe-hint a:hover { color: white; border-color: white; }
 
   .footer {
     padding: 32px 0 40px;
@@ -414,7 +464,12 @@
     <div class="kicker">Stay in the loop</div>
     <h3>A weekly signal, for leaders who need signal, not volume.</h3>
     <p>Friday mornings, in your inbox. One Lead Signal, five Radar picks, one counter-voice, one reframing question, one governance reminder.</p>
-    <a class="btn" href="https://www.linkedin.com/newsletters/the-transformation-brief-7445765347598684160" target="_blank" rel="noopener">Read The Brief on LinkedIn</a>
+    <form id="subscribe-form-archive" class="subscribe-form" data-source="archive" novalidate>
+      <input type="email" name="email" required placeholder="Your email" autocomplete="email" aria-label="Email address" />
+      <button type="submit">Get the Friday signal</button>
+    </form>
+    <p class="subscribe-status" id="subscribe-status-archive" role="status" aria-live="polite"></p>
+    <p class="subscribe-hint">No spam. Unsubscribe with one click. Also available <a href="https://www.linkedin.com/newsletters/the-transformation-brief-7445765347598684160" target="_blank" rel="noopener">on LinkedIn</a>.</p>
   </div>
 </section>
 
@@ -450,6 +505,56 @@
 </footer>
 
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script>
+(function () {
+  function wire(formId, statusId) {
+    var form = document.getElementById(formId);
+    var status = document.getElementById(statusId);
+    if (!form || !status) return;
+    var button = form.querySelector('button[type="submit"]');
+    var emailIn = form.querySelector('input[name="email"]');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var email = (emailIn.value || '').trim();
+      if (!email || email.indexOf('@') < 1) {
+        status.className = 'subscribe-status err';
+        status.textContent = 'That email looks off, give it another try.';
+        return;
+      }
+      button.disabled = true;
+      status.className = 'subscribe-status';
+      status.textContent = 'Saving...';
+      try {
+        var resp = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, source: form.dataset.source || 'web' }),
+        });
+        if (resp.ok) {
+          status.className = 'subscribe-status ok';
+          status.textContent = 'You are on the list. The next Friday signal lands in your inbox.';
+          form.reset();
+        } else if (resp.status === 429) {
+          status.className = 'subscribe-status err';
+          status.textContent = 'Easy there, give it a minute and try again.';
+        } else {
+          status.className = 'subscribe-status err';
+          status.textContent = 'Could not save right now. Try again, or email craig@craighortonadvisory.com.';
+        }
+      } catch (_) {
+        status.className = 'subscribe-status err';
+        status.textContent = 'Network hiccup. Try again, or email craig@craighortonadvisory.com.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+  wire('subscribe-form-archive', 'subscribe-status-archive');
+  wire('subscribe-form-hero', 'subscribe-status-hero');
+})();
+</script>
 
 </body>
 </html>
