@@ -48,9 +48,19 @@
   .nav-links { display: flex; gap: 30px; align-items: center; }
   .nav-links a { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10.5pt; color: white; border: none; letter-spacing: 0.02em; padding: 4px 0; border-bottom: 2px solid transparent; }
   .nav-links a:hover { color: white; border-bottom-color: var(--amber); }
+  .nav-links a[aria-current="page"] { color: var(--amber-soft); border-bottom-color: var(--amber); }
   .nav-links a.cta { background: var(--amber); padding: 8px 18px; font-weight: 600; letter-spacing: 0.06em; border: none; cursor: pointer; }
   .nav-links a.cta:hover { background: var(--amber-soft); color: white; border: none; }
-  @media (max-width: 900px) { .nav-links { gap: 18px; } .nav-links a:not(.cta) { display: none; } }
+  @media (max-width: 900px) {
+    .site-nav .nav { align-items: flex-start; gap: 18px; }
+    .nav-links { flex: 1; justify-content: flex-end; gap: 14px; flex-wrap: wrap; }
+    .nav-links a { font-size: 9.5pt; }
+    .nav-links a.cta { padding: 7px 14px; }
+  }
+  @media (max-width: 640px) {
+    .site-nav .nav { flex-direction: column; }
+    .nav-links { justify-content: flex-start; width: 100%; }
+  }
 
   /* Masthead */
   .masthead { background: var(--navy); color: white; padding: 80px 0 100px; position: relative; overflow: hidden; }
@@ -67,6 +77,12 @@
     .masthead .wordmark { margin-bottom: 36px; }
   }
   .masthead .subtitle { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 18pt; line-height: 1.4; color: white; margin-bottom: 40px; max-width: 720px; }
+  .masthead-actions { display: flex; gap: 16px; flex-wrap: wrap; margin: -10px 0 40px; }
+  .masthead-actions a { display: inline-block; padding: 14px 26px; border: 1px solid var(--amber); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10.5pt; letter-spacing: 0.08em; }
+  .masthead-actions .primary { background: var(--amber); color: white; border-color: var(--amber); }
+  .masthead-actions .primary:hover { background: var(--amber-soft); border-color: var(--amber-soft); color: white; }
+  .masthead-actions .secondary { color: var(--amber-soft); border-color: rgba(226, 163, 88, 0.6); }
+  .masthead-actions .secondary:hover { color: white; border-color: white; }
   .masthead .byline { font-family: 'Inter', Arial, sans-serif; font-weight: 500; font-size: 10pt; color: white; letter-spacing: 0.04em; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.2); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
   /* Stats stripe */
@@ -138,6 +154,12 @@
   /* Coroner interactive */
   .coroner-run { padding: 80px 0; background: var(--cream); border-top: 1px solid var(--hairline); }
   .coroner-empty { max-width: 720px; }
+  .empty-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
+  .empty-actions a { display: inline-block; padding: 13px 24px; border: 1px solid var(--amber); font-family: 'Inter', sans-serif; font-weight: 700; font-size: 10.5pt; letter-spacing: 0.07em; }
+  .empty-actions .primary { background: var(--amber); color: white; border-color: var(--amber); }
+  .empty-actions .primary:hover { background: var(--amber-soft); color: white; border-color: var(--amber-soft); }
+  .empty-actions .secondary { color: var(--amber); }
+  .empty-actions .secondary:hover { color: var(--navy); border-color: var(--navy); }
   .coroner-summary { background: white; padding: 20px 24px; margin: 24px 0 32px; border-left: 3px solid var(--amber); display: grid; grid-template-columns: max-content 1fr; gap: 8px 28px; max-width: 760px; }
   @media (max-width: 700px) { .coroner-summary { grid-template-columns: 1fr; gap: 4px; } }
   .coroner-summary .key { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 10pt; color: rgba(26,42,71,0.65); letter-spacing: 0.04em; }
@@ -217,10 +239,10 @@
         <a href="./">The Brief</a>
         <a href="./end-of-the-org-chart.html">Thinking</a>
         <a href="./diagnostic.html">Diagnostic</a>
-        <a href="./workflow-coroner.html">Workflow Coroner</a>
+        <a href="./workflow-coroner.html" aria-current="page">Workflow Coroner</a>
         <a href="https://bvf.craighortonadvisory.com/?code=bvf2026">AI BVF</a>
         <a href="./about.html">About</a>
-        <a href="" class="cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});}return false;">Get in Touch</a>
+        <a href="./contact.html" class="cta" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});return false;}">Get in Touch</a>
       </div>
     </nav>
   </div>
@@ -234,6 +256,10 @@
     <div class="paper-kicker">An agent pipeline built on the AI BVF</div>
     <h1>The Workflow Coroner</h1>
     <p class="subtitle">Stop the wrong work before AI automates it. An open-source agent pipeline that reads Celonis-shaped event logs, scores against the AI Business Value Framework, and emits MuleSoft Anypoint calls when the ruling is Stop.</p>
+    <div class="masthead-actions" aria-label="Workflow Coroner actions">
+      <a href="./workflow-coroner.html#i=manufacturing&r=125000000&f=finance&t=gen3&x=agile&sa=72&fr=68&ce=64&gr=28" class="primary">Run sample workmate</a>
+      <a href="https://github.com/Bahamas1717/ai-bvf/tree/main/examples/workflow-coroner" class="secondary">Inspect the pipeline</a>
+    </div>
     <div class="byline">
       <span>By Craig Horton, AI Transformation Advisor</span>
       <span>May 2026 &nbsp;&middot;&nbsp; brief.craighortonadvisory.com</span>
@@ -379,12 +405,16 @@
   </div>
 </section>
 
-<section class="coroner-run">
+<section class="coroner-run" id="coroner-run">
   <div class="container">
     <div id="coroner-empty" class="coroner-empty">
       <div class="section-kicker">Step two, the Coroner</div>
       <h2 class="section-head">Finish the AI BVF, come back here.</h2>
       <p class="section-body">Once you complete the AI BVF and copy the share link, paste it into the address bar on this page and the Coroner picks up the four pillar scores plus your business inputs, asks one shape question on the workflow itself, and returns the verdict. Until then the form below stays hidden.</p>
+      <div class="empty-actions">
+        <a href="./workflow-coroner.html#i=manufacturing&r=125000000&f=finance&t=gen3&x=agile&sa=72&fr=68&ce=64&gr=28" class="primary">Try the sample run</a>
+        <a href="https://bvf.craighortonadvisory.com/?code=bvf2026" class="secondary">Start with AI BVF</a>
+      </div>
     </div>
 
     <div id="coroner-active" hidden>
@@ -455,6 +485,15 @@
   var TIER_LABEL = { gen1: 'Gen 1, scripted', gen2: 'Gen 2, GenAI assist', gen3: 'Gen 3, agentic' };
   var READINESS_LABEL = { agile: 'Agile, collaborative', traditional: 'Traditional hierarchy', siloed: 'Siloed, bureaucratic' };
   var INDUSTRY_LABEL = { manufacturing: 'Manufacturing & Supply Chain', financial_services: 'Financial Services', healthcare: 'Healthcare', retail: 'Retail', tech: 'Technology', professional_services: 'Professional Services', public: 'Public sector', energy: 'Energy', telecom: 'Telecom', media: 'Media' };
+
+  function h(value) {
+    return String(value == null ? '' : value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
 
   var WORKFLOW_PROFILES = {
     finance: {
@@ -711,9 +750,9 @@
     el.innerHTML = ''
       + '<div class="workmate-tag">agentic workmate has analysed your inputs</div>'
       + '<div class="workmate-body">'
-      +   '<strong>The typical ' + profile.name + ' in ' + industryLabel + '</strong> '
-      +   'runs ' + profile.activities + ' activities across ' + profile.integrations + ' system integrations, '
-      +   'a ' + profile.exception + ' percent exception rate, and ' + authorityWord + '. '
+      +   '<strong>The typical ' + h(profile.name) + ' in ' + h(industryLabel) + '</strong> '
+      +   'runs ' + h(profile.activities) + ' activities across ' + h(profile.integrations) + ' system integrations, '
+      +   'a ' + h(profile.exception) + ' percent exception rate, and ' + h(authorityWord) + '. '
       +   'The four sliders below have been set to this profile. Confirm or adjust, then run the workmate.'
       + '</div>';
   }
@@ -763,11 +802,11 @@
   function renderSummary(ai) {
     var s = document.getElementById('coroner-summary');
     s.innerHTML = ''
-      + '<span class="key">Industry</span><span class="val">' + (INDUSTRY_LABEL[ai.industry] || ai.industry) + '</span>'
+      + '<span class="key">Industry</span><span class="val">' + h(INDUSTRY_LABEL[ai.industry] || ai.industry) + '</span>'
       + '<span class="key">Annual revenue</span><span class="val">' + fmtEUR(ai.revenue) + '</span>'
-      + '<span class="key">Function</span><span class="val">' + (FN_LABEL[ai.fn] || ai.fn) + '</span>'
-      + '<span class="key">AI tier</span><span class="val">' + (TIER_LABEL[ai.tier] || ai.tier) + '</span>'
-      + '<span class="key">Readiness</span><span class="val">' + (READINESS_LABEL[ai.readiness] || ai.readiness) + '</span>'
+      + '<span class="key">Function</span><span class="val">' + h(FN_LABEL[ai.fn] || ai.fn) + '</span>'
+      + '<span class="key">AI tier</span><span class="val">' + h(TIER_LABEL[ai.tier] || ai.tier) + '</span>'
+      + '<span class="key">Readiness</span><span class="val">' + h(READINESS_LABEL[ai.readiness] || ai.readiness) + '</span>'
       + '<span class="key">AI BVF pillars</span><span class="val">Strategic Alignment ' + ai.sa + ' &middot; Financial Return ' + ai.fr + ' &middot; Change Enablement ' + ai.ce + ' &middot; Governance Risk ' + ai.gr + '</span>';
   }
 
@@ -779,20 +818,20 @@
       var actions = profile.monday[r.label];
       var listItems = '';
       for (var i = 0; i < actions.length; i++) {
-        listItems += '<li>' + actions[i] + '</li>';
+        listItems += '<li>' + h(actions[i]) + '</li>';
       }
       mondayBlock = ''
         + '<div class="co-monday">'
         +   '<div class="co-monday-tag">your Monday plan</div>'
-        +   '<div class="co-monday-h">Three moves for the ' + profile.name + ' under a ' + r.label + ' ruling.</div>'
+        +   '<div class="co-monday-h">Three moves for the ' + h(profile.name) + ' under a ' + h(r.label) + ' ruling.</div>'
         +   '<ul class="co-monday-list">' + listItems + '</ul>'
         + '</div>';
     }
     o.innerHTML = ''
       + '<div class="co-card">'
       +   '<div class="co-tag">workmate verdict</div>'
-      +   '<div class="co-ruling" style="color:' + r.tone + '">' + r.label + '</div>'
-      +   '<div class="co-line">' + r.line + '</div>'
+      +   '<div class="co-ruling" style="color:' + h(r.tone) + '">' + h(r.label) + '</div>'
+      +   '<div class="co-line">' + h(r.line) + '</div>'
       +   '<div class="co-pillars">'
       +     '<div><div class="co-pillar-name">Strategic Alignment</div><div class="co-pillar-val">' + r.sa_adj + '</div></div>'
       +     '<div><div class="co-pillar-name">Financial Return</div><div class="co-pillar-val">' + r.fr_adj + '</div></div>'
@@ -808,20 +847,28 @@
       + '<p class="section-body" style="margin-top:18px;">This is the Verdict layer with the Monday plan attached. The full Coroner envelope, Architect target-state plan, Wire MuleSoft Anypoint calls, Sequencer 90-day rollout across the portfolio, runs end-to-end on Python in the open-source repo. <a href="https://github.com/Bahamas1717/ai-bvf/tree/main/examples/workflow-coroner">See the full pipeline on GitHub</a>.</p>';
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  function activateFromHash() {
     var ai = parseHash();
     if (!ai) return;
     document.getElementById('coroner-empty').hidden = true;
     document.getElementById('coroner-active').hidden = false;
+    document.getElementById('coroner-output').hidden = true;
+    document.getElementById('coroner-output').innerHTML = '';
     renderSummary(ai);
 
     var profile = prefillProfile(ai);
     if (profile) {
+      document.getElementById('workmate-banner').style.display = '';
       applyProfile(profile);
       renderWorkmateBanner(profile, ai);
     } else {
       document.getElementById('workmate-banner').style.display = 'none';
     }
+    return { ai: ai, profile: profile };
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var current = activateFromHash();
 
     var fields = ['activities', 'integrations', 'exception'];
     fields.forEach(function(f) {
@@ -831,6 +878,9 @@
     });
 
     document.getElementById('cf-submit').addEventListener('click', function() {
+      var ai = current && current.ai ? current.ai : parseHash();
+      if (!ai) return;
+      var profile = current && current.profile ? current.profile : prefillProfile(ai);
       var wf = {
         activities: Number(document.getElementById('cf-activities').value),
         integrations: Number(document.getElementById('cf-integrations').value),
@@ -844,10 +894,20 @@
       }, 60);
     });
 
+    window.addEventListener('hashchange', function() {
+      current = activateFromHash();
+      if (current) {
+        setTimeout(function() {
+          var anchor = document.getElementById('coroner-active');
+          if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+      }
+    });
+
     window.addEventListener('load', function() {
       setTimeout(function() {
         var anchor = document.getElementById('coroner-active');
-        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (current && anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 200);
     });
   });
@@ -935,7 +995,7 @@
     <div class="kicker">A conversation, not a pitch</div>
     <h2>Want to run the Coroner against your own Celonis export?</h2>
     <p>Thirty minutes on the calendar, you bring the workflow data shape, I bring the AI BVF and an honest verdict. No deck, no pitch, the engine does the work.</p>
-    <a href="" class="btn" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});}return false;">Book a Call</a>
+    <a href="./contact.html" class="btn" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/craigmds1/new-meeting?primary_color=c97a2b&text_color=1a2a47&background_color=fafaf7&hide_gdpr_banner=1'});return false;}">Book a Call</a>
   </div>
 </section>
 
