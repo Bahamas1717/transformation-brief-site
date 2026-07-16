@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Transformation Brief, Issue 15 briefing</title>
+<meta name="description" content="The Transformation Brief, Issue 15, briefing edition. Where does the AI dividend go? JPMorgan cut some teams by 30 to 40 percent and told investors not to expect fatter margins.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;}
+  :root{--navy:#1a2a47;--amber:#c97a2b;--amber-soft:#e2a358;--white:#ffffff;--hair:rgba(26,42,71,0.18);}
+  html,body{background:var(--white);}
+  .mail{width:680px;max-width:100%;margin:0 auto;background:var(--white);font-family:'Inter',Arial,sans-serif;color:var(--navy);}
+
+  .top{background:var(--navy);color:var(--white);padding:26px 36px 22px;position:relative;}
+  .top .strip{position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--amber) 0%,var(--amber-soft) 100%);}
+  .top .adv{font-family:'Inter',sans-serif;font-weight:600;font-size:9pt;letter-spacing:0.22em;color:var(--amber-soft);margin-bottom:6px;}
+  .top .name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:27pt;line-height:1;color:var(--white);}
+  .top .dateline{font-family:'Inter',sans-serif;font-weight:600;font-size:8.5pt;letter-spacing:0.16em;color:var(--amber-soft);margin-top:10px;}
+
+  .sec{padding:26px 36px 6px;}
+  .greet{font-family:'Inter',sans-serif;font-size:10.5pt;line-height:1.65;color:var(--navy);}
+  .greet .who{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:14pt;margin-bottom:2px;}
+  .greet .role{font-family:'Inter',sans-serif;font-weight:700;font-size:8pt;letter-spacing:0.2em;color:var(--amber);margin-bottom:12px;}
+
+  .flag{font-family:'Inter',sans-serif;font-weight:700;font-size:9pt;letter-spacing:0.24em;color:var(--amber);border-top:2px solid var(--navy);padding-top:10px;margin-bottom:14px;}
+
+  .story{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--hair);}
+  .story:last-of-type{border-bottom:none;}
+  .story .n{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:20pt;line-height:1;color:var(--amber);width:26px;flex-shrink:0;}
+  .story h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:13.5pt;line-height:1.2;color:var(--navy);margin-bottom:4px;}
+  .story p{font-family:'Inter',sans-serif;font-size:10.5pt;line-height:1.55;color:var(--navy);}
+  .story p b{font-weight:700;}
+  .story .src{display:block;font-weight:700;font-size:7.5pt;letter-spacing:0.14em;margin-top:3px;}
+  .story .src a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-soft);}
+  .closer .clabel a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-soft);}
+
+  .comment .piece{padding:12px 0;border-bottom:1px solid var(--hair);}
+  .comment .piece:last-of-type{border-bottom:none;}
+  .comment .who{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:14.5pt;color:var(--navy);margin-bottom:4px;}
+  .comment .who .col{color:var(--amber);}
+  .comment p{font-family:'Inter',sans-serif;font-size:10pt;line-height:1.55;color:var(--navy);margin-bottom:6px;}
+
+  .closer{background:rgba(26,42,71,0.045);padding:22px 36px 18px;margin-top:20px;}
+  .closer .clabel{font-family:'Inter',sans-serif;font-weight:700;font-size:9pt;letter-spacing:0.24em;color:var(--amber);margin-bottom:8px;}
+  .closer h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:21pt;line-height:1.1;color:var(--navy);margin-bottom:14px;}
+  .closer .q{font-family:'Cormorant Garamond',Georgia,serif;font-weight:700;font-size:13pt;color:var(--amber);margin:12px 0 4px;}
+  .closer p{font-family:'Inter',sans-serif;font-size:10.5pt;line-height:1.6;color:var(--navy);margin-bottom:8px;}
+  .closer ul{list-style:none;margin:4px 0 10px;}
+  .closer ul li{font-family:'Inter',sans-serif;font-size:10.5pt;line-height:1.55;color:var(--navy);padding:5px 0 5px 18px;position:relative;}
+  .closer ul li:before{content:"";position:absolute;left:0;top:11px;width:8px;height:8px;background:var(--amber);}
+  .closer img{width:100%;height:auto;border:1px solid var(--hair);margin:10px 0 4px;}
+  .closer .cap{font-family:'Inter',sans-serif;font-size:8.5pt;line-height:1.45;color:var(--navy);}
+
+  .qbox{background:var(--navy);color:var(--white);padding:20px 24px;margin:22px 36px;}
+  .qbox .qtag{font-family:'Inter',sans-serif;font-weight:700;font-size:8.5pt;color:var(--amber-soft);letter-spacing:0.22em;margin-bottom:8px;}
+  .qbox .qtext{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:15pt;line-height:1.35;color:var(--white);}
+
+  .foot{background:var(--navy);color:var(--white);padding:20px 36px;margin-top:8px;}
+  .foot p{font-family:'Inter',sans-serif;font-size:9pt;line-height:1.6;color:var(--white);opacity:0.9;}
+  .foot a{color:var(--amber-soft);text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="mail">
+
+  <div class="top">
+    <div class="strip"></div>
+    <div class="adv">Craig Horton Advisory</div>
+    <div class="name">The Transformation Brief</div>
+    <div class="dateline">Issue 15 &nbsp;·&nbsp; Friday 17 July 2026</div>
+  </div>
+
+  <div class="sec">
+    <div class="greet">
+      <div class="who">Craig Horton</div>
+      <div class="role">The Transformation Brief</div>
+      <p>Good morning. This week we are covering where the AI dividend actually lands, JPMorgan reducing some teams by 30 to 40 percent while telling investors not to expect fatter margins, Anthropic putting $1.5 billion behind an implementation firm, and a radar where Brussels has just made cloud infrastructure part of the AI rulebook.</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="flag">Top signals</div>
+    <div class="story"><div class="n">1</div><div><h3>The model makers are moving into the transformation business</h3><p>Anthropic, Blackstone and Hellman &amp; Friedman launched Ode with Anthropic this week, a <b>$1.5 billion</b> enterprise AI services firm built on the Fractional AI team, two weeks after Microsoft committed $2.5 billion to its Frontier Company. The battleground is shifting from models to implementation, which is where the operating model lives.</p><span class="src"><a href="https://www.businesswire.com/news/home/20260715205134/en/Anthropic-Blackstone-and-Hellman-Friedman-Introduce-Ode-with-Anthropic-an-Enterprise-AI-Services-Firm">Business Wire, 15 July 2026</a></span></div></div>
+    <div class="story"><div class="n">2</div><div><h3>Infrastructure is now part of the AI rulebook</h3><p>The EU Cloud and AI Development Act was published in the Official Journal on 15 July and takes effect on <b>4 August</b>, with the first cloud sovereignty tier applying from February 2028. After last issue's finding that 83% of organisations need material infrastructure change, the where and the who of your compute is now regulated strategy, not procurement detail.</p><span class="src"><a href="https://digital-strategy.ec.europa.eu/en/policies/cloud-and-ai-development-act">European Commission, 15 July 2026</a></span></div></div>
+    <div class="story"><div class="n">3</div><div><h3>Cost discipline has reached the prompt</h3><p>JPMorgan is telling staff not to point expensive frontier models at easy tasks, with CFO Jeremy Barnum urging teams to <b>use the right model for the right purpose</b>. When a $20 billion technology budget starts managing AI unit costs at the level of the individual task, AI spend has become an operating line like any other.</p><span class="src"><a href="https://www.bloomberg.com/news/articles/2026-07-14/jpmorgan-urges-staff-to-avoid-deploying-pricey-ai-for-easy-tasks">Bloomberg, 14 July 2026</a></span></div></div>
+  </div>
+
+  <div class="sec comment">
+    <div class="flag">Comment</div>
+    <div class="piece">
+      <div class="who">Craig Horton: <span class="col">The dividend is real, the margin is not</span></div>
+      <p>Every AI business case I see still ends the same way: a savings line that lands neatly in next year's P&amp;L. This week the biggest bank in the world, with a thousand use cases in production, said the quiet part out loud: the efficiency is real, and the margin gain mostly is not, because your competitors have the same tools.</p>
+      <p>That is not a reason to slow down. It is a reason to know where your dividend goes before you promise it to the board!</p>
+    </div>
+  </div>
+
+  <div class="closer">
+    <div class="clabel">A closer look &nbsp;·&nbsp; <a href="https://www.cnbc.com/2026/07/14/jpm-bank-of-america-citi-bank-earnings-live-updates.html">CNBC bank earnings coverage, 14 July 2026</a></div>
+    <h2>Where does the AI dividend go?</h2>
+    <div class="q">What's the latest?</div>
+    <p>On Tuesday's Q2 earnings call, Jamie Dimon put numbers on what AI is doing inside JPMorgan: close to a thousand use cases in production, and "discrete areas where we did reduce jobs by 30% or 40%", with most of those people redeployed rather than released.</p>
+    <p>Then he told investors not to bank it: "You don't uniquely benefit from AI. In a competitive, capitalist world, we all will use AI to do a better job for the customers."</p>
+    <p>Read those two statements together and you have the most honest account of enterprise AI economics any CEO has given this year. The work changes dramatically. The margin, mostly, does not.</p>
+    <div class="q">Why does it matter?</div>
+    <p>Because it tells you the AI dividend has three destinations, and only one of them is the P&amp;L. Part is competed away into price and service, because every rival deploys the same tools. Part is reinvested in the operating model change itself, the redesigned roles and the redeployed people. What is left for the margin is real but residual, and it is never the headline number in the business case.</p>
+    <p>So before the next AI initiative is approved on a savings line, ask:</p>
+    <ul>
+      <li>Which share of the modelled saving survives competition, honestly?</li>
+      <li>Where do the displaced hours go, and is the redeployment costed?</li>
+      <li>Who owns the workflow after the change, and who signs for the residual?</li>
+      <li>If the margin case is thin, is the real case customer value, and does the board know that is what it is buying?</li>
+    </ul>
+    <img src="./images/visual-15-ai-dividend.png" alt="The AI dividend readout, JPMorgan Q2 2026: the gain lands with the customer first, the workflow second, the margin last">
+    <div class="cap">The AI dividend readout from JPMorgan's Q2. The saving is real; where it lands is the strategy question.</div>
+  </div>
+
+  <div class="qbox">
+    <div class="qtag">My reframe question</div>
+    <div class="qtext">Before you approve an AI business case on a savings line, can you show how much of that saving reaches the P&amp;L after competition takes its share and the redeployment is paid for, and who signed for that number?</div>
+  </div>
+
+  <div class="foot">
+    <p>Once again, I appreciate your interest and time to read this brief, and as always, look forward to your feedback and comments. Enjoy your weekend, Craig</p>
+    <p style="margin-top:10px;">The Transformation Brief &nbsp;·&nbsp; <a href="https://brief.craighortonadvisory.com">brief.craighortonadvisory.com</a> &nbsp;·&nbsp; <a href="https://brief.craighortonadvisory.com/archive.html">Archive</a></p>
+  </div>
+
+</div>
+</body>
+</html>
