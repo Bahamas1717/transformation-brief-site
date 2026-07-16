@@ -6,7 +6,7 @@ Publish steps: LinkedIn newsletter editor, title below, upload `images/issue-15-
 
 ---
 
-Good morning. This week's issue we cover where the AI dividend falls, JPMorgan reducing some teams by 30 to 40% while telling investors not to expect fatter margins, Anthropic putting $1.5 billion behind an implementation firm, and a radar where Brussels has just made cloud infrastructure part of the AI rulebook.
+Good morning. This week's issue we cover where the AI dividend falls, JPMorgan reducing some teams by 30 to 40% while telling investors not to expect fatter margins, Anthropic putting $1.5 billion behind an implementation firm, and a radar where OpenAI has put a physical keypad on the desk for steering AI agents.
 
 ## The lead signal: where does the AI dividend go?
 
@@ -41,7 +41,7 @@ Source: CNBC bank earnings coverage, 14th July 2026, https://www.cnbc.com/2026/0
 
 **The frontier model companies are moving into the transformation business.** Anthropic, Blackstone and Hellman & Friedman launched Ode with Anthropic this week, a $1.5 billion enterprise AI services firm built on the Fractional AI team, two weeks after Microsoft committed $2.5 billion to its Frontier Company. The frontier model companies now want to run the deployment, and the deployment is where your operating model gets decided. (Business Wire, 15th July 2026)
 
-**Infrastructure is now part of the AI rulebook.** The EU Cloud and AI Development Act was published in the Official Journal on 15th July and takes effect on 4th August, with the first cloud sovereignty tier applying from February 2028. Last issue we saw 83% of organisations need material infrastructure change, now the where and the who of your compute comes with a rulebook attached. (European Commission, 15th July 2026)
+**Supervising AI agents now comes with hardware.** OpenAI released its first hardware product this week, the Codex Micro, a $230 desktop keypad built with Work Louder for monitoring and steering AI coding agents, with a push-to-talk key and a dial that adjusts how hard the model thinks. When supervising agents gets its own control surface on the desk, the supervision role in your operating model has become a real job. (TechCrunch, 15th July 2026)
 
 **Cost discipline has reached the prompt.** JPMorgan is telling staff not to point expensive frontier models at easy tasks, with CFO Jeremy Barnum urging teams to use the right model for the right purpose. A $20 billion technology budget has started managing AI cost at the level of the individual task, which tells you AI spend is now a normal operating line. (Bloomberg, 14th July 2026)
 
