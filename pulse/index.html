@@ -162,17 +162,17 @@
 <main>
   <form id="pulse-form" class="card" novalidate>
     <p class="eyebrow">One-question pulse</p>
-    <p class="meta" id="meta">Issue 04, April 2026. Governance driver.</p>
-    <h1 id="question">If a regulator asked tomorrow for a plain-language log of every AI agent decision your organisation has made this quarter, could you produce it?</h1>
+    <p class="meta" id="meta">Issue 15, July 2026. Talent driver.</p>
+    <h1 id="question">Of every dollar your organisation spends on AI this year, what share goes to upskilling your people rather than buying technology or licences?</h1>
     <p class="preamble">Anonymous. 15 seconds. Your answer feeds the monthly Blueprint Index, published in the next issue.</p>
 
     <fieldset>
       <legend>Pick one</legend>
       <div class="options" id="options">
-        <label class="option"><input type="radio" name="answer" value="Yes, easily" required><span class="option-text">Yes, easily</span></label>
-        <label class="option"><input type="radio" name="answer" value="Yes with effort"><span class="option-text">Yes with effort</span></label>
-        <label class="option"><input type="radio" name="answer" value="No"><span class="option-text">No</span></label>
-        <label class="option"><input type="radio" name="answer" value="We do not have agents making decisions"><span class="option-text">We do not have agents making decisions</span></label>
+        <label class="option"><input type="radio" name="answer" value="More than 25 cents in the dollar" required><span class="option-text">More than 25 cents in the dollar</span></label>
+        <label class="option"><input type="radio" name="answer" value="10 to 25 cents in the dollar"><span class="option-text">10 to 25 cents in the dollar</span></label>
+        <label class="option"><input type="radio" name="answer" value="Less than 10 cents in the dollar"><span class="option-text">Less than 10 cents in the dollar</span></label>
+        <label class="option"><input type="radio" name="answer" value="Almost nothing, it all goes on technology and licences"><span class="option-text">Almost nothing, it all goes on technology and licences</span></label>
       </div>
     </fieldset>
 
@@ -191,12 +191,12 @@
 </footer>
 
 <script>
-  // Poll config for issue 04. When the skill runs each Friday it rewrites this block
+  // Poll config for issue 15. When the skill runs each Friday it rewrites this block
   // with the driver and question for the current month. The rest of the page stays as is.
   const POLL = {
-    driver: 'governance-risk',
-    question_id: 'governance-q1-2026-04',
-    issue_number: 4,
+    driver: 'talent',
+    question_id: 'talent-q1-2026-07',
+    issue_number: 15,
   };
 
   // Anonymous token, one per device, persists for dedupe only.
